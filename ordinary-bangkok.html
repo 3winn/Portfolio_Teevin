@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ordinary Bangkok — Atom Portfolio</title>
+  <meta name="description" content="Ordinary Bangkok identity and packaging — branding case study by Teevin Atom Hiranlertprasert">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg: #F5F4F0; --surface: #EDECE8; --text: #0D0D0D;
+      --muted: #9B9893; --accent: #2B46E0; --border: rgba(0,0,0,0.09);
+      --font: 'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.6rem; opacity: 0.4; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+    .cs-lead p + p { margin-top: 1rem; }
+
+    /* Client-approved cover crop: wordmark is centered in the photo, so a
+       centered cinematic crop keeps the mark whole with root texture around it. */
+    .cs-cover { width: 100%; aspect-ratio: 21/9; overflow: hidden; background: #1A1A1A; }
+    .cs-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { background: var(--bg); padding: 1.75rem 2rem; }
+    .cs-meta-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.9; max-width: 620px; }
+    .cs-section p + p { margin-top: 1rem; }
+
+    .cs-section--tight { padding-bottom: 3.5rem; }
+
+    /* ── SPEC-SHEET CARDS — white drawings contained + padded, never cropped ── */
+    .cs-sheet-stack { display: grid; gap: clamp(0.9rem, 1.8vw, 1.4rem); margin-top: 3rem; }
+    .cs-sheet { background: #FFFFFF; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; padding: clamp(2rem, 5vw, 3.5rem); }
+    .cs-sheet img { max-width: 100%; height: auto; display: block; }
+    .cs-sheet--narrow img { width: min(420px, 78%); }
+
+    /* ── DIVIDER — composition check (ดูองค์ประกอบ): tray sits mid-frame,
+       2:1 crop nudged down keeps the object whole with air on all sides ── */
+    .cs-divider { width: 100%; aspect-ratio: 2/1; overflow: hidden; background: #F2F2F2; }
+    .cs-divider img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; display: block; }
+
+    /* ── GRAPHIC STYLE BOARD ── */
+    .cs-style-board { max-width: 1100px; margin: 0 auto; padding: 0 3rem 6.5rem; display: grid; gap: clamp(0.9rem, 1.8vw, 1.4rem); }
+    /* --cols set inline per pair: columns proportional to each photo's aspect
+       ratio so both land at identical heights with zero cropping. */
+    .cs-row--pair { display: grid; grid-template-columns: var(--cols, 1fr 1fr); gap: clamp(0.9rem, 1.8vw, 1.4rem); }
+    .cs-photo { border: 1px solid var(--border); background: var(--surface); }
+    .cs-photo img { width: 100%; height: auto; display: block; }
+
+    .cs-bottom-nav { display: flex; justify-content: center; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+      .cs-back, .cs-header, .cs-section, .cs-style-board { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-cover { aspect-ratio: 16/10; }
+      .cs-divider { aspect-ratio: 16/10; }
+      .cs-row--pair { grid-template-columns: 1fr; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html#work">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">Branding <span>·</span> Packaging</div>
+  <h1 class="cs-title">Ordinary Bangkok</h1>
+  <div class="cs-lead">
+    <p>The quietest experiences often mean the most.</p>
+    <p>Ordinary Bangkok begins with light and shadow. What looks plain at first slowly reveals its depth, its character, and its intent. Every detail is refined with care, yet none of it asks for attention. The identity simply invites a second look — and rewards it with soft textures, gentle contrasts, and balanced proportions.</p>
+    <p>This philosophy is called Minimal Contrast. Less becomes more — not through decoration, but through precision.</p>
+  </div>
+</header>
+
+<div class="cs-cover">
+  <img src="images/projects/Ordinaly%20Bangkok/Hero%20Banner_Ord.jpg" alt="Ordinary Bangkok hero banner — the lowercase serif wordmark set over a black-and-white photograph of tree roots">
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item">
+    <div class="cs-meta-label">Client</div>
+    <div class="cs-meta-value">Ordinary Bangkok</div>
+  </div>
+  <div class="cs-meta-item">
+    <div class="cs-meta-label">Deliverables</div>
+    <div class="cs-meta-value">Identity · Packaging</div>
+  </div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Overview</div>
+  <h2>The ordinary, made precise</h2>
+  <p>Ordinary Bangkok is a Thai homeware label. Its trays and bowls are turned from ash, oak, walnut, and teak, and they are deliberately quiet objects. The identity had to match: nothing loud, nothing extra — "creatively ordinary." So the whole brand rests on one gentle move. The wordmark is a single line of lowercase serif type, with "ordinary" in soft grey and "bangkok" in near-black. That small step in tone is the logo. It is Minimal Contrast at work.</p>
+  <p>A mark this simple leaves nowhere to hide, so the craft sits in the details. The drawings below show how tight the system is. The first refines the letterforms down to the curve of a single terminal. The second protects the mark with its own alphabet: the "o" of ordinary sets the clear space on every side.</p>
+
+  <div class="cs-sheet-stack">
+    <div class="cs-sheet">
+      <img src="images/projects/Ordinaly%20Bangkok/LOgo%20Detail.png" alt="Wordmark detail sheet — the terminal of the letter y circled and refined in a construction drawing" loading="lazy">
+    </div>
+    <div class="cs-sheet">
+      <img src="images/projects/Ordinaly%20Bangkok/ordinary%20bankok%20logo_%20SpaceArea.png" alt="Clear-space diagram — the letter o of ordinary defines the protected area on every side of the wordmark" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<div class="cs-divider">
+  <img src="images/projects/Ordinaly%20Bangkok/image1.jpeg" alt="Grey two-compartment wooden tray photographed from above on a white surface" loading="lazy">
+</div>
+
+<section class="cs-section cs-section--tight">
+  <div class="cs-section-label">02 — Graphic style</div>
+  <h2>Nothing is added.<br>Only perception is refined.</h2>
+  <p>The graphic style follows a Thai idea: สัจจะวัตถุ — truth to materials. The object is shown as it is. Each white sleeve carries one grayscale photograph of the piece inside — stan, mani, marin — with no props, no styling, no color. Slide the kraft drawer open and the photograph gives way to the real thing. The two match.</p>
+  <p>Everything else stays plain so the wood can speak. The box is raw kraft. The type is small and factual: the product name in lowercase serif, the wood options — ash, oak, walnut — and a few honest lines from the brand. The grain of each tray is the only ornament, and it needs no help.</p>
+</section>
+
+<div class="cs-style-board">
+  <div class="cs-sheet">
+    <img src="images/projects/Ordinaly%20Bangkok/Draft.jpg" alt="Packaging dieline draft — 15 by 15 centimetre sleeve with the stan tray photograph and the brand statement laid out flat" loading="lazy">
+  </div>
+  <div class="cs-row--pair" style="--cols: 0.666fr 1.005fr;">
+    <div class="cs-photo">
+      <img src="images/projects/Ordinaly%20Bangkok/Package.jpg" alt="Kraft boxes with white printed sleeves stacked on a wooden table beside a potted plant" loading="lazy">
+    </div>
+    <div class="cs-photo">
+      <img src="images/projects/Ordinaly%20Bangkok/Package2.jpg" alt="Open mani box — the kraft drawer slides out to reveal the walnut tray beneath the grayscale sleeve photograph" loading="lazy">
+    </div>
+  </div>
+  <div class="cs-sheet cs-sheet--narrow">
+    <img src="images/projects/Ordinaly%20Bangkok/Design_Style.png" alt="Label style sheet — two tall product labels for stan and mani with grayscale tray photographs and the wordmark" loading="lazy">
+  </div>
+</div>
+
+<div class="cs-bottom-nav">
+  <a href="index.html#work" class="cs-nav-link">← Back to all projects</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+</body>
+</html>

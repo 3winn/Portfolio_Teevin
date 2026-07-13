@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAT Market 4.0 — Atom Portfolio</title>
+  <meta name="description" content="CAT Market 4.0 — an online-to-offline campaign that launched CAT's iget mart app through a real market event. Case study by Teevin Atom Hiranlertprasert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg: #F5F4F0; --surface: #EDECE8; --text: #0D0D0D;
+      --muted: #9B9893; --accent: #2B46E0; --border: rgba(0,0,0,0.09);
+      --font: 'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.4rem; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    /* Hero: wide campaign banner shown whole on a matching peach band */
+    .cs-cover { width: 100%; background: #F6E3CF; padding: clamp(2rem, 5vw, 3.5rem) 3rem; }
+    .cs-cover img { display: block; width: 100%; max-width: 851px; height: auto; margin: 0 auto; box-shadow: 0 20px 40px rgba(122,62,14,0.16), 0 5px 12px rgba(122,62,14,0.1); }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { padding: 1.5rem 2rem; background: var(--bg); }
+    .cs-meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+
+    .cs-solutions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); margin-top: 2.5rem; }
+    .cs-sol { background: var(--bg); padding: 2rem; }
+    .cs-sol-num { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; display: block; margin-bottom: 0.75rem; }
+    .cs-sol h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .cs-sol p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* Roadmap: white-panel figure, diagram shown whole */
+    .cs-roadmap { max-width: 1200px; margin: 0 auto; padding: 0 3rem 6rem; }
+    .cs-roadmap-panel { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: clamp(1.25rem, 3vw, 2.5rem); }
+    .cs-roadmap-panel img { display: block; width: 100%; height: auto; }
+    .cs-roadmap figcaption { margin-top: 1.1rem; font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+    /* Campaign slider: scroll-snap strip with arrows + drag */
+    .cs-slider-kicker { padding: 0.75rem 3rem 0.5rem; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+    .cs-img-hscroll-wrap { width: 100%; position: relative; overflow: hidden; }
+    .cs-img-hscroll { display: flex; gap: 3px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; cursor: grab; background: var(--border); scroll-snap-type: x proximity; }
+    .cs-img-hscroll.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+    .cs-img-hscroll::-webkit-scrollbar { display: none; }
+    .cs-img-hscroll img { height: 380px; width: auto; flex-shrink: 0; display: block; background: var(--surface); pointer-events: none; scroll-snap-align: start; }
+    .cs-hscroll-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 6; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 999px; background: rgba(255,255,255,0.92); color: var(--green-900); cursor: pointer; box-shadow: 0 2px 8px rgba(11,18,63,0.15); transition: background 0.2s, opacity 0.2s; }
+    .cs-hscroll-arrow:hover:not(:disabled) { background: #fff; }
+    .cs-hscroll-arrow:disabled { opacity: 0.4; cursor: default; }
+    .cs-hscroll-arrow--prev { left: 1rem; }
+    .cs-hscroll-arrow--next { right: 1rem; }
+    .cs-scroll-hint { text-align: center; padding: 0.75rem; font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--green-700); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+      .cs-back, .cs-header, .cs-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-solutions { grid-template-columns: 1fr; }
+      .cs-cover { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-roadmap { padding: 0 1.5rem 4.5rem; }
+      .cs-slider-kicker { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-img-hscroll img { height: 280px; }
+      .cs-hscroll-arrow--prev { left: 0.5rem; }
+      .cs-hscroll-arrow--next { right: 0.5rem; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">Campaign <span>·</span> O2O <span>·</span> E-Commerce <span>·</span> 2018</div>
+  <h1 class="cs-title">CAT Market 4.0</h1>
+  <p class="cs-lead">CAT built iget mart, an online buying-and-selling platform. But a new app doesn't spread on its own — so the campaign launched it in the real world. Social media pulled people to a physical market event, and the event sent them back to the app.</p>
+</header>
+
+<div class="cs-cover">
+  <img src="images/projects/cat-marketing/Hero.png" alt="CAT Market 4.0 campaign banner — iget mart app on a phone among Thai market goods, announcing the event on 11–12 September 2018">
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">CAT</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Art Director · Campaign Designer</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2018 — event held 11–12 September</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Deliverables</div><div class="cs-meta-value">Key Visual · Social Content · Campaign Roadmap · Reward Mechanics</div></div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Challenge</div>
+  <h2>Launch an app by
+filling a market.</h2>
+  <p>CAT was launching iget mart, an online buying-and-selling system. The hard part wasn't building it — it was getting real buyers and sellers to try it. A download link on its own convinces no one.</p>
+  <p>So the campaign flipped the usual launch. Instead of asking people to meet the platform online, it brought the platform to them: a physical market event where visitors could see the system work, use it, and win something for doing so.</p>
+</section>
+
+<figure class="cs-roadmap">
+  <div class="cs-roadmap-panel">
+    <img src="images/projects/cat-marketing/Roadmap.png" alt="Campaign roadmap diagram — social promotion and market visits drive to the event, the event feeds the prize draw, with knowledge and lifestyle content running throughout">
+  </div>
+  <figcaption>Campaign roadmap &mdash; the full journey from pre-event market promotions to the post-event prize draw.</figcaption>
+</figure>
+
+<section class="cs-section" style="padding-top: 0;">
+  <div class="cs-section-label">02 — Approach</div>
+  <h2>Online to offline —
+and back online.</h2>
+  <p style="margin-bottom:2rem;color:var(--muted);line-height:1.8;max-width:680px;">The campaign was designed as one continuous journey. Every step handed people to the next — from their social feed to the event grounds and back to the app.</p>
+  <div class="cs-solutions">
+    <div class="cs-sol">
+      <span class="cs-sol-num">01</span>
+      <h3>Warm up the crowd</h3>
+      <p>Before the event, the team went where the buyers already were: physical markets. They handed out discounts on the spot and published promo content introducing the iget mart system.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">02</span>
+      <h3>Give people a reason to show up</h3>
+      <p>Social media ran giveaways of prizes and discounts — all redeemable only at the event. Online attention became a ticket to a real place.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">03</span>
+      <h3>Buy, scan, enter</h3>
+      <p>At the event, every purchase came with a QR code. Scanning it registered the buyer for a prize draw — turning each sale into an entry and each visitor into a platform user.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">04</span>
+      <h3>Keep them after the lights go out</h3>
+      <p>The prizes were drawn after the event, so attendees stayed connected online to follow the results. The journey ended where the platform lives: on their phones.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cs-slider-kicker">From the campaign — key visual, social posts, reward mechanics and the event itself.</div>
+<div class="cs-img-hscroll-wrap">
+  <button class="cs-hscroll-arrow cs-hscroll-arrow--prev" type="button" aria-label="Scroll to previous image" disabled>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 3L5.5 9l6 6"/></svg>
+  </button>
+  <div class="cs-img-hscroll" id="hscroll" tabindex="0" aria-label="CAT Market 4.0 campaign images">
+    <img src="images/projects/cat-marketing/Key%20visual.jpg" alt="CAT Market 4.0 key visual — hand touching the iget mart app on a phone, surrounded by Thai market products">
+    <img src="images/projects/cat-marketing/example_post2.jpg" alt="Promo post — phone with the iget mart app between the Thai headline 'the gathering place of Thai goods' and 'shop online at iget Mart'">
+    <img src="images/projects/cat-marketing/example_post1.jpg" alt="CAT e-business content post — Aculearn Online by CAT announcement with orange balloons">
+    <img src="images/projects/cat-marketing/Lucky1.jpg" alt="Lucky draw post 1 — 50 baht discount for first-time iget mart downloads">
+    <img src="images/projects/cat-marketing/Lucky2.jpg" alt="Lucky draw post 2 — buy 500 baht at the event, get a 50 baht discount in the iget mart app">
+    <img src="images/projects/cat-marketing/Lucky3.jpg" alt="Lucky draw post 3 — special prize draw every day at 17.00 at the event">
+    <img src="images/projects/cat-marketing/event%202.jpg" alt="CAT Market 4.0 event — orange iget mart and iget clinic booths with visitors in a bright atrium">
+    <img src="images/projects/cat-marketing/event.jpeg" alt="CAT Market 4.0 event — opening ceremony on stage with confetti">
+    <img src="images/projects/cat-marketing/reward%20post.jpg" alt="Reward post — announcing the lucky winner of an AKA Resort Guti Hua Hin stay after the event">
+  </div>
+  <button class="cs-hscroll-arrow cs-hscroll-arrow--next" type="button" aria-label="Scroll to next image">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3l6 6-6 6"/></svg>
+  </button>
+</div>
+<div class="cs-scroll-hint">← Drag to explore →</div>
+<script>
+/* Campaign slider: drag-scroll + prev/next arrows + scroll-snap */
+(function () {
+  const el = document.getElementById('hscroll');
+  if (!el) return;
+  const prev = document.querySelector('.cs-hscroll-arrow--prev');
+  const next = document.querySelector('.cs-hscroll-arrow--next');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function update() {
+    prev.disabled = el.scrollLeft <= 4;
+    next.disabled = el.scrollLeft >= el.scrollWidth - el.clientWidth - 4;
+  }
+  function nudge(dir) {
+    el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: reduced ? 'auto' : 'smooth' });
+  }
+  prev.addEventListener('click', function () { nudge(-1); });
+  next.addEventListener('click', function () { nudge(1); });
+  el.addEventListener('scroll', function () { requestAnimationFrame(update); }, { passive: true });
+  el.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); nudge(-1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); nudge(1); }
+  });
+
+  let down = false, startX = 0, startLeft = 0;
+  el.addEventListener('mousedown', function (e) {
+    down = true;
+    startX = e.pageX;
+    startLeft = el.scrollLeft;
+    el.classList.add('is-dragging');
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function (e) {
+    if (!down) return;
+    el.scrollLeft = startLeft - (e.pageX - startX) * 1.1;
+  });
+  document.addEventListener('mouseup', function () {
+    if (!down) return;
+    down = false;
+    el.classList.remove('is-dragging');
+  });
+
+  update();
+  window.addEventListener('resize', update);
+})();
+</script>
+
+<div class="cs-bottom-nav">
+  <a href="nt-smart-life.html" class="cs-nav-link">← NT Smart Life</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="new-economy-academy.html" class="cs-nav-link">New Economy Academy →</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Economy Academy — Atom Portfolio</title>
+  <meta name="description" content="New Economy Academy — full identity for a government learning academy: logo, color, graphic style and print. Case study by Teevin Atom Hiranlertprasert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg: #F5F4F0; --surface: #EDECE8; --text: #0D0D0D;
+      --muted: #9B9893; --accent: #2B46E0; --border: rgba(0,0,0,0.09);
+      --font: 'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.4rem; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    /* ── LOGO HERO — the identity leads: whole, padded, never cropped ── */
+    .cs-logo-hero { background: #FFFFFF; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; padding: clamp(3.5rem, 9vw, 7rem) 2rem; }
+    .cs-logo-hero img { width: min(480px, 72%); height: auto; display: block; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { padding: 1.5rem 2rem; background: var(--bg); }
+    .cs-meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+
+    .cs-solutions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); margin-top: 2.5rem; }
+    .cs-sol { background: var(--bg); padding: 2rem; }
+    .cs-sol-num { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; display: block; margin-bottom: 0.75rem; }
+    .cs-sol h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .cs-sol p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── CONCEPT FIGURE — dark triptych shown whole on its own black field ── */
+    .cs-concept-fig { background: #05070C; padding: clamp(1.5rem, 4vw, 2.75rem); margin-bottom: 2.25rem; }
+    .cs-concept-fig img { width: 100%; height: auto; display: block; }
+    .cs-section .cs-concept-lede { font-size: 1.05rem; color: var(--text); }
+
+    /* ── GRAPHIC STYLE BOARD — images contained + padded, never cropped ── */
+    .cs-board { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: clamp(4rem, 8vw, 6.5rem) 3rem; }
+    .cs-board-inner { max-width: 1060px; margin: 0 auto; }
+    .cs-board-grid { display: grid; grid-template-columns: 1fr; gap: clamp(0.9rem, 1.8vw, 1.4rem); }
+    .cs-board-row { display: grid; gap: clamp(0.9rem, 1.8vw, 1.4rem); }
+    .cs-board-row--split { grid-template-columns: 1fr 1.55fr; }
+    /* --cols set inline per pair: column widths proportional to each photo's
+       aspect ratio, so both land at identical heights with zero cropping. */
+    .cs-board-row--pair { grid-template-columns: var(--cols, 1fr 1fr); }
+    .cs-board-item { position: relative; overflow: hidden; background: #FFFFFF; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; padding: clamp(1.75rem, 4vw, 3.25rem); }
+    .cs-board-item img { position: relative; max-width: 100%; height: auto; display: block; }
+    .cs-board-item--flush { padding: 0; }
+    .cs-board-item--flush img { width: 100%; }
+    .cs-board-item--logo::before { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(58%, 210px); aspect-ratio: 0.866; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); background: rgba(109, 197, 241, 0.14); }
+    .cs-board-item--logo img { width: min(40%, 130px); }
+    .cs-board-caption { max-width: 640px; margin: clamp(2.75rem, 6vw, 4rem) auto 0; text-align: center; }
+    .cs-board-caption p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; }
+    .cs-hex-row { display: flex; justify-content: center; gap: 0.45rem; margin-bottom: 1.4rem; }
+    .cs-hex-row span { display: block; width: 13px; aspect-ratio: 0.866; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
+    .cs-hex-row span:nth-child(1) { background: #0057A8; }
+    .cs-hex-row span:nth-child(2) { background: #6DC5F1; }
+    .cs-hex-row span:nth-child(3) { background: #8C8C8C; }
+
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--green-700); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+      .cs-back, .cs-header, .cs-section, .cs-board { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-solutions, .cs-board-row--split, .cs-board-row--pair { grid-template-columns: 1fr; }
+      .cs-board-item--logo { min-height: 260px; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">Branding <span>·</span> Identity <span>·</span> Logo <span>·</span> Gov</div>
+  <h1 class="cs-title">New Economy
+Academy</h1>
+  <p class="cs-lead">NEW ECONOMY ACADEMY is a knowledge center for sharing digital marketing, business and design knowledge from the government to small and medium enterprises.</p>
+</header>
+
+<div class="cs-logo-hero">
+  <img src="images/projects/new-economy-academy/NEA_FULL_LOGO.png" alt="New Economy Academy — full logo">
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">New Economy Academy (NEA)</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Brand Designer</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2019</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Deliverables</div><div class="cs-meta-value">Logo · Color System · Visual Identity · Leaflet</div></div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Challenge</div>
+  <h2>Government design
+that doesn't feel
+like government.</h2>
+  <p>Most government branding plays it safe — institutional colors, formal type, and no personality. NEA was different. The program was genuinely trying to help people, and the brand needed to communicate that warmth and ambition from the first glance.</p>
+  <p>The challenge was finding a visual language that was credible enough for official use but human enough to actually connect with the small business owners the program was built for.</p>
+</section>
+
+<section class="cs-section">
+  <div class="cs-section-label">02 — Concept</div>
+  <h2>Concept</h2>
+  <figure class="cs-concept-fig">
+    <img src="images/projects/new-economy-academy/Concept%20NEA_2.png" alt="Concept moodboard triptych — bees on a honeycomb, a connected network globe, and a glowing blue hexagon grid">
+  </figure>
+  <p class="cs-concept-lede">A small and medium enterprise is like a bee — individually diligent, but truly powerful when working together in harmony.</p>
+  <p>NEA created this center as a hive of opportunity, designed to amplify market potential and cultivate shared wisdom. Like a honeycomb, it strengthens with every entrepreneur who returns to contribute their knowledge, building a thriving academy where ideas grow and innovation flourishes.</p>
+</section>
+
+<section class="cs-section">
+  <div class="cs-section-label">03 — Approach</div>
+  <h2>Smart, connected,
+and built to grow.</h2>
+  
+  <div class="cs-solutions">
+    <div class="cs-sol">
+      <span class="cs-sol-num">01</span>
+      <h3>Logo Design</h3>
+      <p>Two strokes interlock inside a hexagon — a mark built around connection. It reflects knowledge flowing between government and entrepreneurs, and works at any size, from official documents to a profile picture.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">02</span>
+      <h3>Color System</h3>
+      <p>A crisp, innovative blue leads the palette — deep blue for trust, sky blue for energy, and a neutral grey for balance. Official enough for government, fresh enough for a startup classroom.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">03</span>
+      <h3>Graphic Style</h3>
+      <p>A flexible illustration and pattern system that could be applied across touchpoints — from stage backdrops to leaflets to digital banners.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">04</span>
+      <h3>Leaflet & Collateral</h3>
+      <p>Applied the system to printed materials used in workshops and government events — making sure every touchpoint felt consistent and intentional.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cs-board" aria-label="Graphic style board">
+  <div class="cs-board-inner">
+    <div class="cs-board-grid">
+      <div class="cs-board-row cs-board-row--split">
+        <div class="cs-board-item cs-board-item--logo">
+          <img src="images/projects/new-economy-academy/NEA_LOGO_final_onecolor.png" alt="NEA logo mark — a blue hexagon formed by two interlocking strokes">
+        </div>
+        <div class="cs-board-item">
+          <img src="images/projects/new-economy-academy/Color.png" alt="NEA color system — deep blue C100 M60, sky blue C60 and grey K60">
+        </div>
+      </div>
+      <div class="cs-board-item">
+        <img src="images/projects/new-economy-academy/NEA%20Graphic%20Style.png" alt="NEA design style board — hanging banners, registration signage and information stands in the blue hexagon identity">
+      </div>
+      <div class="cs-board-row cs-board-row--pair" style="--cols: 1.516fr 1.524fr;">
+        <div class="cs-board-item cs-board-item--flush">
+          <img src="images/projects/new-economy-academy/Design%20element1.png" alt="Backlit NEA hexagon mark glowing on a concrete interior wall">
+        </div>
+        <div class="cs-board-item cs-board-item--flush">
+          <img src="images/projects/new-economy-academy/Design%20element2.png" alt="Luminous blue NEA hexagon hovering above an open hand">
+        </div>
+      </div>
+      <div class="cs-board-item cs-board-item--flush">
+        <img src="images/projects/new-economy-academy/NEA%20Leaflet.png" alt="NEA tri-fold leaflet — Thailand 4.0 roadmap infographic with hexagon icons in brand blue">
+      </div>
+      <div class="cs-board-row cs-board-row--pair" style="--cols: 1.484fr 1.516fr;">
+        <div class="cs-board-item cs-board-item--flush">
+          <img src="images/projects/new-economy-academy/Design%20element3.png" alt="White NEA mark printed on royal-blue fabric">
+        </div>
+        <div class="cs-board-item cs-board-item--flush">
+          <img src="images/projects/new-economy-academy/Design%20element4.png" alt="Three-dimensional blue and grey hexagon tiles with the NEA mark">
+        </div>
+      </div>
+    </div>
+    <div class="cs-board-caption">
+      <div class="cs-hex-row" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="cs-section-label">Graphic Concept</div>
+      <p>At the core of the brand lies the hexagon — a geometry of unity and resilience. By pairing this structural symbol with a crisp, innovative blue, the design communicates a vision that is both rooted in shared wisdom and propelled by future-ready technology.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cs-bottom-nav">
+  <a href="cat-marketing.html" class="cs-nav-link">← CAT Market 4.0</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="k-flo.html" class="cs-nav-link">K-Flo →</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+</body>
+</html>

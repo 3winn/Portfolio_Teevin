@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Design — Atom Portfolio</title>
+  <meta name="description" content="Social Media Content — ongoing social content for 7-Eleven, SCG, Arabus, Weber and Thailand Trust Mark. Case study by Teevin Atom Hiranlertprasert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg: #F5F4F0; --surface: #EDECE8; --text: #0D0D0D;
+      --muted: #9B9893; --accent: #2B46E0; --border: rgba(0,0,0,0.09);
+      --font: 'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.4rem; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    .cs-cover { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--surface); }
+    .cs-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { padding: 1.5rem 2rem; background: var(--bg); }
+    .cs-meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+
+    /* Working-method flow diagram (Plan.png) — shown whole, full width,
+       never cropped (per client) */
+    .cs-plan { margin-top: 2.5rem; }
+    .cs-plan-card { border: 1px solid var(--border); border-radius: 12px; background: #F2EFE9; }
+    .cs-plan-card img { display: block; width: 100%; height: auto; }
+
+    /* Vertical 4-step working method — numbered nodes joined by a line
+       + chevron, echoing Plan.png's flow language */
+    .cs-steps { list-style: none; margin-top: 3.5rem; max-width: 660px; }
+    .cs-step { display: flex; gap: 1.75rem; }
+    .cs-step-marker { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .cs-step-num { width: 52px; height: 52px; border: 1px solid var(--accent); border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 600; color: var(--accent); background: #fff; }
+    .cs-step-line { flex: 1; width: 1px; background: var(--border); margin-top: 8px; }
+    .cs-step-chevron { color: var(--accent); display: flex; margin: 4px 0 10px; }
+    .cs-step-body { padding-bottom: 2.75rem; }
+    .cs-step:last-child .cs-step-body { padding-bottom: 0; }
+    .cs-step-body h3 { font-size: 1.05rem; font-weight: 600; margin: 0.9rem 0 0.6rem; }
+    .cs-step-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 0; }
+
+    .cs-img-full { width: 100%; overflow: hidden; background: var(--surface); }
+    .cs-img-full img { width: 100%; display: block; object-fit: cover; }
+    .cs-img-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-2col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 4/3; background: var(--surface); }
+    .cs-img-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-3col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 3/4; background: var(--surface); }
+    .cs-img-hscroll-wrap { width: 100%; position: relative; overflow: hidden; }
+    .cs-img-hscroll { display: flex; gap: 3px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; cursor: grab; background: var(--border); scroll-snap-type: x proximity; }
+    .cs-img-hscroll.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+    .cs-img-hscroll::-webkit-scrollbar { display: none; }
+    .cs-img-hscroll img { height: 420px; width: auto; flex-shrink: 0; object-fit: cover; display: block; background: var(--surface); pointer-events: none; scroll-snap-align: start; }
+    .cs-hscroll-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 6; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 999px; background: rgba(255,255,255,0.92); color: var(--green-900); cursor: pointer; box-shadow: 0 2px 8px rgba(11,18,63,0.15); transition: background 0.2s, opacity 0.2s; }
+    .cs-hscroll-arrow:hover:not(:disabled) { background: #fff; }
+    .cs-hscroll-arrow:disabled { opacity: 0.4; cursor: default; }
+    .cs-hscroll-arrow--prev { left: 1rem; }
+    .cs-hscroll-arrow--next { right: 1rem; }
+
+    /* ── SOCIAL POST MOCKUPS (hero) — artwork framed as real posts ── */
+    .sm-hero { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 4.5rem 3rem; display: flex; justify-content: center; align-items: flex-start; gap: 2.5rem; flex-wrap: wrap; }
+    .sm-post { background: #fff; border-radius: 12px; box-shadow: 0 12px 32px rgba(11,18,63,0.12); width: 340px; max-width: 100%; overflow: hidden; }
+    .sm-post-head { display: flex; align-items: center; gap: 0.75rem; padding: 0.9rem 1rem; }
+    .sm-avatar { width: 38px; height: 38px; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.72rem; font-weight: 600; flex-shrink: 0; }
+    .sm-page { flex: 1; min-width: 0; }
+    .sm-page-name { font-size: 0.85rem; font-weight: 600; line-height: 1.2; }
+    .sm-page-meta { font-size: 0.7rem; color: var(--muted); }
+    .sm-menu { color: var(--muted); display: flex; }
+    .sm-post-img img { width: 100%; height: auto; display: block; }
+    .sm-actions { display: flex; border-top: 1px solid var(--border); }
+    .sm-action { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.45rem; padding: 0.7rem 0; font-size: 0.75rem; font-weight: 500; color: var(--muted); }
+    @media (min-width: 901px) {
+      .sm-post:nth-child(2) { transform: translateY(-16px); }
+    }
+    .cs-scroll-hint { text-align: center; padding: 0.75rem; font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--green-700); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+      .cs-back, .cs-header, .cs-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-img-2col, .cs-img-3col { grid-template-columns: 1fr; }
+      .cs-step { gap: 1.25rem; }
+      .cs-step-num { width: 44px; height: 44px; }
+      .sm-hero { padding: 3rem 1.5rem; gap: 1.5rem; }
+      .cs-img-hscroll img { height: 300px; }
+      .cs-hscroll-arrow--prev { left: 0.5rem; }
+      .cs-hscroll-arrow--next { right: 0.5rem; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">Social Media <span>·</span> Creative <span>·</span> Agency <span>·</span> 2017–2020</div>
+  <h1 class="cs-title">Social Media
+Design</h1>
+  <p class="cs-lead">Five years of social media design across brands in different industries — each with its own tone, audience, and visual language. From convenience stores to industrial groups to food platforms.</p>
+</header>
+
+<div class="sm-hero" aria-label="Selected work framed as social media posts">
+  <article class="sm-post">
+    <div class="sm-post-head">
+      <span class="sm-avatar" style="background:#008752;" aria-hidden="true">7E</span>
+      <div class="sm-page">
+        <div class="sm-page-name">7-Eleven Thailand</div>
+        <div class="sm-page-meta">Sponsored</div>
+      </div>
+      <span class="sm-menu" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><circle cx="4" cy="9" r="1.4"/><circle cx="9" cy="9" r="1.4"/><circle cx="14" cy="9" r="1.4"/></svg></span>
+    </div>
+    <div class="sm-post-img"><img src="images/projects/social-media/7-11.jpg" alt="7-Eleven Thailand — I Miss Japan campaign post"></div>
+    <div class="sm-actions" aria-hidden="true">
+      <span class="sm-action"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Like</span>
+      <span class="sm-action"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Comment</span>
+      <span class="sm-action"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>Share</span>
+    </div>
+  </article>
+  <article class="sm-post">
+    <div class="sm-post-head">
+      <span class="sm-avatar" style="background:#D91E2E;" aria-hidden="true">SCG</span>
+      <div class="sm-page">
+        <div class="sm-page-name">SCG</div>
+        <div class="sm-page-meta">Sponsored</div>
+      </div>
+      <span class="sm-menu" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><circle cx="4" cy="9" r="1.4"/><circle cx="9" cy="9" r="1.4"/><circle cx="14" cy="9" r="1.4"/></svg></span>
+    </div>
+    <div class="sm-post-img"><img src="images/projects/social-media/SCG.jpg" alt="SCG — Next Normal ionizer system campaign post"></div>
+    <div class="sm-actions" aria-hidden="true">
+      <span class="sm-action"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Like</span>
+      <span class="sm-action"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Comment</span>
+      <span class="sm-action"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>Share</span>
+    </div>
+  </article>
+  <article class="sm-post">
+    <div class="sm-post-head">
+      <span class="sm-avatar" style="background:#14452F;" aria-hidden="true">A</span>
+      <div class="sm-page">
+        <div class="sm-page-name">Arabus Drip Coffee</div>
+        <div class="sm-page-meta">Sponsored</div>
+      </div>
+      <span class="sm-menu" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><circle cx="4" cy="9" r="1.4"/><circle cx="9" cy="9" r="1.4"/><circle cx="14" cy="9" r="1.4"/></svg></span>
+    </div>
+    <div class="sm-post-img"><img src="images/projects/social-media/Arabus.jpg" alt="Arabus — halal-certified drip coffee launch post"></div>
+    <div class="sm-actions" aria-hidden="true">
+      <span class="sm-action"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>Like</span>
+      <span class="sm-action"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Comment</span>
+      <span class="sm-action"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>Share</span>
+    </div>
+  </article>
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">Multiple clients</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Social Media Designer · Art Director</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2017 – 2020</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Deliverables</div><div class="cs-meta-value">Social Content · Visual Design · Art Direction</div></div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Challenge</div>
+  <h2>Different brands.
+Different voices.
+One standard.</h2>
+  <p>Agency social media work is fast, relentless, and less forgiving than it looks. Briefs, trends, and brand needs shift all the time — and the clients had nothing in common: a Thai convenience store, a global building materials group, a startup food app, a specialty coffee distributor.</p>
+  <p>The job was to understand each brand deeply enough to produce content that felt right for them, not just content that looked nice. And to do it consistently, at scale, without losing quality.</p>
+</section>
+
+
+
+<section class="cs-section">
+  <div class="cs-section-label">02 — Approach</div>
+  <h2>One brief.
+One system.
+Any brand.</h2>
+  <p>Different brands, same discipline — every campaign moved through the same four steps.</p>
+
+  <figure class="cs-plan">
+    <div class="cs-plan-card">
+      <img src="images/projects/social-media/Plan.png" alt="Flow diagram of the four-step working method: Brief Interpretation & Insights, then Campaign Concept Development, then Key Visual System & Content Framework, then Content Calendar & Creative Production">
+    </div>
+  </figure>
+
+  <ol class="cs-steps">
+    <li class="cs-step">
+      <div class="cs-step-marker" aria-hidden="true">
+        <span class="cs-step-num">01</span>
+        <span class="cs-step-line"></span>
+        <span class="cs-step-chevron"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6 6-6"/></svg></span>
+      </div>
+      <div class="cs-step-body">
+        <h3>Brief Interpretation &amp; Insights</h3>
+        <p>Every campaign starts by breaking the brief down into a clear goal, audience, and single message. Brand, category, and audience insights then shape where the creative can go.</p>
+      </div>
+    </li>
+    <li class="cs-step">
+      <div class="cs-step-marker" aria-hidden="true">
+        <span class="cs-step-num">02</span>
+        <span class="cs-step-line"></span>
+        <span class="cs-step-chevron"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6 6-6"/></svg></span>
+      </div>
+      <div class="cs-step-body">
+        <h3>Campaign Concept Development</h3>
+        <p>The insight becomes a campaign idea — a core concept strong enough to carry every post that follows. Directions are explored, tested against the brief, and narrowed to one.</p>
+      </div>
+    </li>
+    <li class="cs-step">
+      <div class="cs-step-marker" aria-hidden="true">
+        <span class="cs-step-num">03</span>
+        <span class="cs-step-line"></span>
+        <span class="cs-step-chevron"><svg width="14" height="8" viewBox="0 0 14 8" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6 6-6"/></svg></span>
+      </div>
+      <div class="cs-step-body">
+        <h3>Key Visual System &amp; Content Framework</h3>
+        <p>The chosen concept is designed into a key visual and a repeatable system: layout, type, color, and image style. Content pillars and formats are set so every post stays on-brand without starting from zero.</p>
+      </div>
+    </li>
+    <li class="cs-step">
+      <div class="cs-step-marker" aria-hidden="true">
+        <span class="cs-step-num">04</span>
+      </div>
+      <div class="cs-step-body">
+        <h3>Content Calendar &amp; Creative Production</h3>
+        <p>Posts are planned on a calendar, then produced and adapted for each platform and format. Rounds of review keep quality consistent, and content ships on schedule.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<div style="padding:0.75rem 0 0.5rem 3rem;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);">More client work across 11 brands</div>
+<div class="cs-img-hscroll-wrap">
+  <button class="cs-hscroll-arrow cs-hscroll-arrow--prev" type="button" aria-label="Scroll to previous work" disabled>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 3L5.5 9l6 6"/></svg>
+  </button>
+  <div class="cs-img-hscroll" id="hscroll" tabindex="0" aria-label="More social media work">
+    <img src="images/projects/social-media/extra/7_eleven_week5.jpg" alt="7-Eleven Thailand — cost-of-living promotion post with weekly deal items">
+    <img src="images/projects/social-media/Foodhunt.jpg" alt="FoodHunt — app campaign post">
+    <img src="images/projects/social-media/extra/65159857_875414402817660_7726897038838726656_o.jpg" alt="FoodHunt — egg-menu promotion post with partner restaurant dishes">
+    <img src="images/projects/social-media/Weber.jpg" alt="Weber — home care campaign post">
+    <img src="images/projects/social-media/extra/fashion3.jpg" alt="Gambol × Coca-Cola — Enjoy Colorful fashion campaign key visual">
+    <img src="images/projects/social-media/extra/match%20day.jpg" alt="Leicester City Thailand — Premier League match day post">
+    <img src="images/projects/social-media/extra/24173187_454595624935975_1783960671403297573_o.jpg" alt="Gionee — Merry Christmas and Happy New Year post with a Christmas tree on the phone screen in a snowy forest">
+    <img src="images/projects/social-media/Cat%20e-Business.jpg" alt="CAT e-Business — CAT conference post">
+    <img src="images/projects/social-media/extra/29665525_1594930440621271_458650847824487325_o.jpg" alt="Racer Lighting — 'Clock Shop' marquee-letter post: when the lights go out, the meaning changes">
+    <img src="images/projects/social-media/Thailand%20trust%20mark.png" alt="Thailand Trust Mark — banner series">
+    <img src="images/projects/social-media/The%20agent.png" alt="The Agent — property Facebook post">
+    <img src="images/projects/social-media/extra/Content_1_20250511-04.jpg" alt="Ideo Merge Chula — isometric location-map post for a condominium launch">
+  </div>
+  <button class="cs-hscroll-arrow cs-hscroll-arrow--next" type="button" aria-label="Scroll to next work">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3l6 6-6 6"/></svg>
+  </button>
+</div>
+<div class="cs-scroll-hint">← Drag to explore →</div>
+<script>
+/* Work strip: drag-scroll + prev/next arrows + scroll-snap */
+(function () {
+  const el = document.getElementById('hscroll');
+  if (!el) return;
+  const prev = document.querySelector('.cs-hscroll-arrow--prev');
+  const next = document.querySelector('.cs-hscroll-arrow--next');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function update() {
+    prev.disabled = el.scrollLeft <= 4;
+    next.disabled = el.scrollLeft >= el.scrollWidth - el.clientWidth - 4;
+  }
+  function nudge(dir) {
+    el.scrollBy({ left: dir * el.clientWidth * 0.8, behavior: reduced ? 'auto' : 'smooth' });
+  }
+  prev.addEventListener('click', function () { nudge(-1); });
+  next.addEventListener('click', function () { nudge(1); });
+  el.addEventListener('scroll', function () { requestAnimationFrame(update); }, { passive: true });
+  el.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); nudge(-1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); nudge(1); }
+  });
+
+  let down = false, startX = 0, startLeft = 0;
+  el.addEventListener('mousedown', function (e) {
+    down = true;
+    startX = e.pageX;
+    startLeft = el.scrollLeft;
+    el.classList.add('is-dragging');
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function (e) {
+    if (!down) return;
+    el.scrollLeft = startLeft - (e.pageX - startX) * 1.1;
+  });
+  document.addEventListener('mouseup', function () {
+    if (!down) return;
+    down = false;
+    el.classList.remove('is-dragging');
+  });
+
+  update();
+  window.addEventListener('resize', update);
+})();
+</script>
+
+<div class="cs-bottom-nav">
+  <a href="wushu.html" class="cs-nav-link">← Crypto Wushu</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="dca-book.html" class="cs-nav-link">DCA Book →</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+</body>
+</html>

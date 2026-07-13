@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Craftman Roastery — Atom Portfolio</title>
+  <meta name="description" content="Craftman Roastery — a cafe in Silpa Bhirasri's former house, where a coffee visit becomes a museum visit. Case study by Teevin Atom Hiranlertprasert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg: #F5F4F0; --surface: #EDECE8; --text: #0D0D0D;
+      --muted: #9B9893; --accent: #2B46E0; --border: rgba(0,0,0,0.09);
+      --font: 'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.4rem; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    /* Cover: archive wall shown whole on a calm gallery band */
+    .cs-cover { width: 100%; background: var(--surface); border-top: 1px solid var(--border); padding: clamp(2.5rem, 6vw, 4.5rem) 3rem; }
+    .cs-cover img { display: block; width: 100%; max-width: 826px; height: auto; margin: 0 auto; box-shadow: 0 24px 48px rgba(0,0,0,0.12), 0 6px 14px rgba(0,0,0,0.08); }
+    .cs-caption { max-width: 826px; margin: 1.4rem auto 0; font-size: 0.8rem; color: var(--muted); line-height: 1.6; text-align: center; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { padding: 1.5rem 2rem; background: var(--bg); }
+    .cs-meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+
+    .cs-solutions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); margin-top: 2.5rem; }
+    .cs-sol { background: var(--bg); padding: 2rem; }
+    .cs-sol-num { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; display: block; margin-bottom: 0.75rem; }
+    .cs-sol h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .cs-sol p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* In-the-room pair: two portrait photographs, whole, with captions */
+    .cs-pair { max-width: 960px; margin: 0 auto; padding: 0 3rem 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+    .cs-pair figure { margin: 0; }
+    .cs-pair img { display: block; width: 100%; height: auto; box-shadow: 0 18px 36px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,0.07); }
+    .cs-pair figcaption { margin-top: 1.1rem; font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+    /* Feature band: the window-glass photo landmark */
+    .cs-feature { background: var(--green-900); padding: clamp(3.5rem, 8vw, 6rem) 3rem; }
+    .cs-feature figure { max-width: 900px; margin: 0 auto; }
+    .cs-feature img { display: block; width: 100%; height: auto; box-shadow: 0 34px 68px rgba(0,0,0,0.5), 0 10px 24px rgba(0,0,0,0.35); }
+    .cs-feature figcaption { max-width: 720px; margin: 1.75rem auto 0; text-align: center; font-size: 0.8rem; color: rgba(226,231,248,0.65); line-height: 1.7; }
+
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--green-700); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+      .cs-back, .cs-header, .cs-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-solutions { grid-template-columns: 1fr; }
+      .cs-cover { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-pair { grid-template-columns: 1fr; padding: 0 1.5rem 4.5rem; gap: 3rem; }
+      .cs-pair img { max-width: 470px; margin: 0 auto; }
+      .cs-pair figcaption { max-width: 470px; margin-left: auto; margin-right: auto; }
+      .cs-feature { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">Cafe <span>·</span> Exhibition Design <span>·</span> Environmental Graphics <span>·</span> [year TBD]</div>
+  <h1 class="cs-title">Craftman
+Roastery</h1>
+  <p class="cs-lead">Craftman Roastery opened inside the former house of Professor Silpa Bhirasri, near Sang Hi Bridge in Bangkok. The design turns a coffee visit into a museum visit: guests read the professor's story, see his sketches on the glass, and drink coffee among his photographs.</p>
+</header>
+
+<figure class="cs-cover">
+  <img src="images/projects/craftman-roastery/Craftman%20cafe%20%20design.png" alt="Wall exhibition titled &quot;Professor Silpa Bhirasri's Archive 1892&ndash;1962&quot;, with panels showing his monuments and sculptures.">
+  <figcaption class="cs-caption">&ldquo;Professor Silpa Bhirasri's Archive, 1892&ndash;1962&rdquo; &mdash; exhibition panels tracing his works, from royal memorials to the Democracy Monument relief.</figcaption>
+</figure>
+
+<div class="cs-meta">
+  <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">Craftman Roastery</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">[TBD]</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">[TBD]</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Deliverables</div><div class="cs-meta-value">Exhibition Design · Window Graphics · Photo Display</div></div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — The Story</div>
+  <h2>A cafe in the
+professor's house.</h2>
+  <p>Craftman Roastery sits inside the former house of Professor Silpa Bhirasri, near Sang Hi Bridge in Bangkok. The Italian-born professor founded modern art education in Thailand, and his home deserved more than a standard cafe fit-out. The brief grew from the building itself: honor the man who lived here.</p>
+  <p>So the concept became a museum, not just a cafe. Every design decision serves both readings of the space. You can come for the coffee, stay for the story, and leave knowing who Silpa Bhirasri was.</p>
+</section>
+
+<div class="cs-pair">
+  <figure>
+    <img src="images/projects/craftman-roastery/exhibition.png" alt="Cafe seating area with wooden tables and chairs below a wall of exhibition panels about Professor Silpa Bhirasri.">
+    <figcaption>The archive wall rises above the cafe tables &mdash; guests read the professor's story while they wait for their coffee.</figcaption>
+  </figure>
+  <figure>
+    <img src="images/projects/craftman-roastery/Picture%20.png" alt="Guests talking at a cafe table beneath framed photographs of Professor Silpa Bhirasri.">
+    <figcaption>Photographs of the professor at work hang throughout the rooms of the house.</figcaption>
+  </figure>
+</div>
+
+<section class="cs-section" style="padding-top: 0;">
+  <div class="cs-section-label">02 — The Design</div>
+  <h2>Read, look, drink.</h2>
+  <p>The house tells the professor's story at every turn:</p>
+  <div class="cs-solutions">
+    <div class="cs-sol">
+      <span class="cs-sol-num">01</span>
+      <h3>Biography on the walls.</h3>
+      <p>An archive exhibition presents his life and works — from the Memorial Statue of King Rama VI to the Democracy Monument relief — so guests can read his biography over coffee.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">02</span>
+      <h3>Sketches on the glass.</h3>
+      <p>The professor's sketch works are printed on the shop's window glass, turning daylight into a display case.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">03</span>
+      <h3>Photographs in every room.</h3>
+      <p>Photographs of the professor decorate the rooms of the cafe, keeping his presence in the space.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">04</span>
+      <h3>Quotes as a landmark.</h3>
+      <p>His quotes are printed on the window glass in decorative Thai lettering. The windows became a photo spot in their own right.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cs-feature">
+  <figure>
+    <img src="images/projects/craftman-roastery/window%20display.png" alt="Left, a lounge corner with the professor's monument sketches printed on the windows; right, a quote by the professor in ornate Thai lettering on the glass.">
+    <figcaption>The professor's sketches and quotes, printed on the window glass &mdash; the windows became a photo landmark of their own.</figcaption>
+  </figure>
+</div>
+
+<div class="cs-bottom-nav">
+  <a href="true-iservice.html" class="cs-nav-link">← True iService Max</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="nueu-cafe.html" class="cs-nav-link">Nueu Cafe →</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+</body>
+</html>

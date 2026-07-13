@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K-Flo — Atom Portfolio</title>
+  <meta name="description" content="K-FLO — bilingual corporate website for an industrial filtration brand, responsive on every screen. Case study by Teevin Atom Hiranlertprasert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg: #F5F4F0; --surface: #EDECE8; --text: #0D0D0D;
+      --muted: #9B9893; --accent: #2B46E0; --border: rgba(0,0,0,0.09);
+      --font: 'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.4rem; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    .cs-cover { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--surface); }
+    .cs-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; display: block; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { padding: 1.5rem 2rem; background: var(--bg); }
+    .cs-meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+
+    .cs-solutions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); margin-top: 2.5rem; }
+    .cs-sol { background: var(--bg); padding: 2rem; }
+    .cs-sol-num { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; display: block; margin-bottom: 0.75rem; }
+    .cs-sol h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .cs-sol p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── Scrollable laptop mockup (K-FLO landing page) ── */
+    .cs-laptop-band { background: linear-gradient(180deg, var(--green-900), #070C2B); padding: 4.5rem 3rem 3.5rem; overflow: hidden; }
+    .cs-laptop { max-width: 780px; margin: 0 auto; }
+    .cs-laptop-lid {
+      background: #17171C;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-bottom: none;
+      border-radius: 20px 20px 0 0;
+      padding: 18px 16px 16px;
+      position: relative;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 12px 28px rgba(0,0,0,0.35);
+    }
+    .cs-laptop-cam { position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: #34343d; }
+    .cs-laptop-screen {
+      aspect-ratio: 16 / 10;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background: #fff;
+      border-radius: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(11,18,63,0.35) transparent;
+    }
+    .cs-laptop-screen::-webkit-scrollbar { width: 6px; }
+    .cs-laptop-screen::-webkit-scrollbar-track { background: transparent; }
+    .cs-laptop-screen::-webkit-scrollbar-thumb { background: rgba(11,18,63,0.35); border-radius: 3px; }
+    .cs-laptop-screen::-webkit-scrollbar-thumb:hover { background: rgba(11,18,63,0.55); }
+    .cs-laptop-screen img { width: 100%; height: auto; display: block; }
+    .cs-laptop-deck {
+      position: relative;
+      width: calc(100% + 56px);
+      margin-left: -28px;
+      height: 16px;
+      background: linear-gradient(180deg, #26262D, #17171C);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: none;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 26px 52px rgba(0,0,0,0.4);
+    }
+    .cs-laptop-deck::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 96px; height: 7px; background: #101015; border-radius: 0 0 8px 8px; }
+    .cs-laptop-hint { margin-top: 2.4rem; text-align: center; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .cs-laptop:hover .cs-laptop-screen img { animation: cs-laptop-drift 4s ease-in-out infinite alternate; }
+      @keyframes cs-laptop-drift {
+        from { transform: translateY(0); }
+        to   { transform: translateY(-3%); }
+      }
+    }
+
+    /* ── Device mockup cards (tablet + mobile) ── */
+    .cs-device-grid { max-width: 1100px; margin: 0 auto; padding: 0 3rem 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .cs-device-card { background: #E2E7F8; border: 1px solid var(--border); border-radius: 12px; padding: clamp(1.5rem, 3vw, 2.5rem); }
+    .cs-device-card img { width: 100%; height: clamp(260px, 34vw, 400px); object-fit: contain; display: block; }
+    .cs-device-card figcaption { margin-top: 1.25rem; text-align: center; font-size: 0.78rem; color: var(--green-700); line-height: 1.6; }
+
+    /* ── Closing figure (product selection) ── */
+    .cs-final-band { background: #E2E7F8; padding: 6rem 3rem; }
+    .cs-final-wrap { max-width: 960px; margin: 0 auto; }
+    .cs-final-kicker { text-align: center; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-700); margin-bottom: 2.25rem; }
+    .cs-final-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: clamp(1rem, 2.5vw, 2rem); max-width: 640px; margin: 0 auto; box-shadow: 0 24px 48px rgba(11,18,63,0.12), 0 6px 16px rgba(11,18,63,0.08); }
+    .cs-final-card img { width: 100%; height: auto; display: block; border-radius: 4px; }
+    .cs-final-caption { max-width: 640px; margin: 1.5rem auto 0; text-align: center; font-size: 0.8rem; color: var(--green-700); line-height: 1.7; }
+
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--green-700); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+      .cs-back, .cs-header, .cs-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-solutions, .cs-device-grid { grid-template-columns: 1fr; }
+      .cs-laptop-band { padding: 3rem 1.5rem 2.5rem; }
+      .cs-laptop-deck { width: calc(100% + 32px); margin-left: -16px; }
+      .cs-device-grid { padding: 0 1.5rem 4.5rem; }
+      .cs-device-card img { height: auto; max-height: 420px; }
+      .cs-final-band { padding: 4rem 1.5rem; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">UX / UI <span>·</span> E-Commerce <span>·</span> Web <span>·</span> 2021</div>
+  <h1 class="cs-title">K-Flo</h1>
+  <p class="cs-lead">K-Flo sells industrial filters — specialist products with complex specs. The website needed to make it easy for technical buyers to find exactly what they need and order without friction.</p>
+</header>
+
+<div class="cs-cover">
+  <img src="images/projects/k-flo/Mockup1.jpg" alt="K-FLO corporate website shown on laptop, tablet and phone — About Us, product catalogue and mobile contact screens">
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">K-Flo Co., Ltd.</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">UX/UI Designer</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2021</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Deliverables</div><div class="cs-meta-value">UX Research · Web Design · Product Catalogue</div></div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Challenge</div>
+  <h2>Technical products.
+Simple experience.</h2>
+  <p>Industrial buyers know exactly what they want — but the old K-Flo site made them work hard to find it. Categories weren't clear, the product hierarchy was flat, and there was no way to filter by technical specification.</p>
+  <p>The result was that buyers either called the sales team directly or gave up. The goal was to design a catalogue experience clear enough that customers could self-serve from first click to checkout.</p>
+</section>
+
+<div class="cs-laptop-band">
+  <div class="cs-laptop">
+    <div class="cs-laptop-lid">
+      <div class="cs-laptop-cam"></div>
+      <div class="cs-laptop-screen" tabindex="0" aria-label="K-FLO landing page — scrollable screenshot">
+        <img src="images/projects/k-flo/Landing.jpg" alt="Full K-FLO landing page: hero banner with heavy machinery, expertise in filtration intro, six industry categories from construction to transportation, and the four reasons to choose K-FLO">
+      </div>
+    </div>
+    <div class="cs-laptop-deck"></div>
+  </div>
+  <p class="cs-laptop-hint">Scroll inside the screen</p>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">02 — Approach</div>
+  <h2>Find it.
+Confirm it.
+Buy it.</h2>
+  <p style="margin-bottom:2rem;color:var(--muted);line-height:1.8;max-width:680px;">The design was built around the mental model of an experienced buyer — someone who knows their filter type, but needs to quickly confirm the spec before committing to an order.</p>
+  <div class="cs-solutions">
+    <div class="cs-sol">
+      <span class="cs-sol-num">01</span>
+      <h3>Information Architecture</h3>
+      <p>Restructured the product categories to match how buyers actually think — by filter type first, then by specification, rather than by internal product code.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">02</span>
+      <h3>Category Pages</h3>
+      <p>Designed clear, scannable category landing pages that let buyers orient quickly and narrow down without having to read through long product descriptions.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">03</span>
+      <h3>Product Selection</h3>
+      <p>A guided selection flow that walks buyers through the key specs — size, material, flow rate — so they can confirm the right product with confidence.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">04</span>
+      <h3>Mockups & Visual Design</h3>
+      <p>Clean, functional UI that communicates precision and reliability — which matters when you're selling to engineers.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cs-device-grid">
+  <figure class="cs-device-card">
+    <img src="images/projects/k-flo/Category.png" alt="Industry categories on a tablet, with the six-category grid pulled forward as a card while a hand annotates the layout with a stylus">
+    <figcaption>Category pages — industries grouped the way buyers think, scannable at a glance.</figcaption>
+  </figure>
+  <figure class="cs-device-card">
+    <img src="images/projects/k-flo/Mockup2.png" alt="K-FLO mobile menu on a phone flanked by two filter products, with the full catalogue reachable from a single navigation panel">
+    <figcaption>Mobile — the full catalogue and contact details, two taps from anywhere.</figcaption>
+  </figure>
+</div>
+
+<section class="cs-final-band" aria-label="Product selection flow">
+  <div class="cs-final-wrap">
+    <p class="cs-final-kicker">The guided selection flow</p>
+    <figure class="cs-final-card">
+      <img src="images/projects/k-flo/Choose-Product.png" alt="Product selection overlay on the K-FLO catalogue: the Hydraulic filter card opens above the dimmed product grid with photos and a spec description, ready to confirm">
+    </figure>
+    <p class="cs-final-caption">Selecting a product opens the spec overlay in place — buyers confirm size, material and flow rate without ever leaving the catalogue.</p>
+  </div>
+</section>
+
+<div class="cs-bottom-nav">
+  <a href="new-economy-academy.html" class="cs-nav-link">← New Economy Academy</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="tivlog.html" class="cs-nav-link">Tivlog →</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+</body>
+</html>

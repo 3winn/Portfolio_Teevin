@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Wushu — Atom Portfolio</title>
+  <meta name="description" content="Crypto Wushu Game — landing page, character cards and marketplace UI for an NFT martial-arts game. Case study by Teevin Atom Hiranlertprasert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg: #F5F4F0; --surface: #EDECE8; --text: #0D0D0D;
+      --muted: #9B9893; --accent: #2B46E0; --border: rgba(0,0,0,0.09);
+      --font: 'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.4rem; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    .cs-cover { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #A5D66E; }
+    .cs-cover img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 88%; display: block; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { padding: 1.5rem 2rem; background: var(--bg); }
+    .cs-meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+
+    .cs-solutions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); margin-top: 2.5rem; }
+    .cs-sol { background: var(--bg); padding: 2rem; }
+    .cs-sol-num { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; display: block; margin-bottom: 0.75rem; }
+    .cs-sol h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .cs-sol p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── DARK BANDS: LAPTOP MOCKUPS ── */
+    .cs-band { background: #101014; padding: 4.5rem 3rem 3.5rem; overflow: hidden; }
+    .cs-band-kicker { text-align: center; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 2.5rem; }
+    .cs-laptop { max-width: 780px; margin: 0 auto; }
+    .cs-laptop-lid {
+      background: #17171C;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-bottom: none;
+      border-radius: 20px 20px 0 0;
+      padding: 18px 16px 16px;
+      position: relative;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 12px 28px rgba(0,0,0,0.35);
+    }
+    .cs-laptop-cam { position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: #34343d; }
+    .cs-laptop-screen {
+      aspect-ratio: 16 / 10;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background: #0B0B0E;
+      border-radius: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.28) transparent;
+    }
+    .cs-laptop-screen::-webkit-scrollbar { width: 6px; }
+    .cs-laptop-screen::-webkit-scrollbar-track { background: transparent; }
+    .cs-laptop-screen::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.28); border-radius: 3px; }
+    .cs-laptop-screen::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.45); }
+    .cs-laptop-screen img { width: 100%; height: auto; display: block; }
+    .cs-laptop-deck {
+      position: relative;
+      width: calc(100% + 56px);
+      margin-left: -28px;
+      height: 16px;
+      background: linear-gradient(180deg, #26262D, #17171C);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: none;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 26px 52px rgba(0,0,0,0.4);
+    }
+    .cs-laptop-deck::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 96px; height: 7px; background: #101015; border-radius: 0 0 8px 8px; }
+    .cs-band-hint { margin-top: 2.4rem; text-align: center; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+    @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+      .cs-laptop:hover .cs-laptop-screen img { animation: cs-screen-drift 4s ease-in-out infinite alternate; }
+      @keyframes cs-screen-drift {
+        from { transform: translateY(0); }
+        to   { transform: translateY(-3%); }
+      }
+    }
+
+    /* ── CARD LINEUP: 5 NFT CARDS ON NAVY BAND ── */
+    .cs-cards-band { background: var(--green-900); padding: 4.5rem 3rem; overflow: hidden; }
+    .cs-cards-band .cs-band-kicker { color: rgba(226,231,248,0.55); }
+    .cs-cards { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+    .cs-cards img { width: 100%; height: auto; display: block; border-radius: 10px; box-shadow: 0 18px 36px rgba(0,0,0,0.45), 0 4px 10px rgba(0,0,0,0.3); }
+    .cs-cards-hint { display: none; }
+
+    /* ── FINAL SHOWCASE: MARKETPLACE LAPTOP + ABILITY PANEL ── */
+    .cs-duo { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
+    .cs-duo .cs-laptop { max-width: none; }
+    .cs-duo-figure { margin: 0; }
+    .cs-duo-caption { margin-top: 1.4rem; text-align: center; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .cs-flat-card { background: #17171C; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 14px; box-shadow: 0 30px 60px rgba(0,0,0,0.45), 0 8px 20px rgba(0,0,0,0.3); }
+    .cs-flat-card img { width: 100%; height: auto; display: block; border-radius: 8px; }
+
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--green-700); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+      .cs-back, .cs-header, .cs-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-solutions { grid-template-columns: 1fr; }
+      .cs-band { padding: 3rem 1.5rem 2.5rem; }
+      .cs-laptop-deck { width: calc(100% + 32px); margin-left: -16px; }
+      .cs-cards-band { padding: 3rem 0 2rem; }
+      .cs-cards-band .cs-band-kicker { padding: 0 1.5rem; }
+      .cs-cards { display: flex; overflow-x: auto; gap: 1rem; padding: 0 1.5rem 1rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+      .cs-cards::-webkit-scrollbar { display: none; }
+      .cs-cards img { flex: 0 0 min(52vw, 216px); width: min(52vw, 216px); }
+      .cs-cards-hint { display: block; text-align: center; padding: 0.75rem 1.5rem 0; font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(226,231,248,0.45); }
+      .cs-duo { grid-template-columns: 1fr; gap: 3rem; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">Creative <span>·</span> Game Design <span>·</span> UI <span>·</span> 2022</div>
+  <h1 class="cs-title">Crypto Wushu</h1>
+  <p class="cs-lead">Crypto Wushu is a blockchain card game. The world needed to feel epic and collectible — and the marketplace UI needed to make trading cards as straightforward as any online shop.</p>
+</header>
+
+<div class="cs-cover">
+  <img src="images/projects/wushu%20Game/205.jpg" alt="Crypto Wushu key art — chibi martial-arts characters and coins surrounding the game website in a browser window">
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">Crypto Wushu</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Creative Director · UI Designer</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2022</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Deliverables</div><div class="cs-meta-value">Landing Page · Card Design · Character Art · Marketplace UI</div></div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Challenge</div>
+  <h2>A card game
+that earns its look.</h2>
+  <p>The crypto gaming space is full of projects that look rushed — generic fantasy art, cluttered UIs, and brands that don't hold together. Crypto Wushu wanted to do it differently.</p>
+  <p>The visual world needed to be genuinely compelling — something that made players want to collect the cards, not just trade them. And the marketplace had to be simple enough that anyone could buy, sell, and understand their collection without needing to understand blockchain first.</p>
+</section>
+
+<!-- Landing page inside a scrollable laptop screen -->
+<div class="cs-band">
+  <div class="cs-band-kicker">Landing Page</div>
+  <div class="cs-laptop">
+    <div class="cs-laptop-lid">
+      <div class="cs-laptop-cam"></div>
+      <div class="cs-laptop-screen" tabindex="0" aria-label="Crypto Wushu landing page — scrollable screenshot">
+        <img src="images/projects/wushu%20Game/Landing%20page.png" alt="Crypto Wushu landing page — full-length screenshot with hero, gameplay video, game modes, clans, items, tokenomics, roadmap and team">
+      </div>
+    </div>
+    <div class="cs-laptop-deck"></div>
+  </div>
+  <p class="cs-band-hint">Scroll inside the screen</p>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">02 — Approach</div>
+  <h2>Epic visuals.
+Clear UX.</h2>
+  <p style="margin-bottom:2rem;color:var(--muted);line-height:1.8;max-width:680px;">The design covered two very different challenges in one project: building an immersive world players wanted to be part of, and a marketplace simple enough for anyone to use.</p>
+  <div class="cs-solutions">
+    <div class="cs-sol">
+      <span class="cs-sol-num">01</span>
+      <h3>Landing Page</h3>
+      <p>A dramatic, cinematic landing page that introduced the Wushu world and made the game's visual ambition clear from the first scroll.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">02</span>
+      <h3>Card Design</h3>
+      <p>A card visual system that balanced martial arts themes with collectible appeal — each card designed to feel unique and worth owning.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">03</span>
+      <h3>Character & Abilities</h3>
+      <p>Illustrated the character lineup and designed the ability cards — building out the game's visual universe so each character had a clear identity.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">04</span>
+      <h3>Marketplace UI</h3>
+      <p>A clean marketplace interface that made buying, selling, and browsing cards simple — no crypto jargon, no confusing flows.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Card designs: the full five-card lineup -->
+<div class="cs-cards-band">
+  <div class="cs-band-kicker">Card Design — The Full Lineup</div>
+  <div class="cs-cards">
+    <img src="images/projects/wushu%20Game/Card%20Design%201.png" alt="NFT card — armor item: robe on a purple wave-pattern card">
+    <img src="images/projects/wushu%20Game/Card%20Design%202.png" alt="NFT card — character: red-robed heroine on a dark grid-pattern card">
+    <img src="images/projects/wushu%20Game/Card%20Design%203.png" alt="NFT card — helmet item: cloth hood on an orange wave-pattern card">
+    <img src="images/projects/wushu%20Game/Card%20Design%204.png" alt="NFT card — trinket item: jade amulet necklace on a gray card">
+    <img src="images/projects/wushu%20Game/Card%20Design%205.png" alt="NFT card — weapon item: battle axe on a green meander-pattern card">
+  </div>
+  <p class="cs-cards-hint">Swipe to browse the cards</p>
+</div>
+
+<!-- Final showcase: marketplace UI + character ability panel -->
+<div class="cs-band">
+  <div class="cs-band-kicker">In-Game Screens</div>
+  <div class="cs-duo">
+    <figure class="cs-duo-figure">
+      <div class="cs-laptop">
+        <div class="cs-laptop-lid">
+          <div class="cs-laptop-cam"></div>
+          <div class="cs-laptop-screen" tabindex="0" aria-label="Crypto Wushu marketplace — scrollable screenshot">
+            <img src="images/projects/wushu%20Game/Marketplace_Item.png" alt="Crypto Wushu marketplace — item grid with filters, rarity, price range and buy-now cards">
+          </div>
+        </div>
+        <div class="cs-laptop-deck"></div>
+      </div>
+      <figcaption class="cs-duo-caption">Marketplace UI — scroll inside the screen</figcaption>
+    </figure>
+    <figure class="cs-duo-figure">
+      <div class="cs-flat-card">
+        <img src="images/projects/wushu%20Game/Character%20ability.png" alt="Clan and ability section — Sky Dragon Temple stat pentagon beside the character, above the items and skills grid">
+      </div>
+      <figcaption class="cs-duo-caption">Character &amp; Abilities</figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="cs-bottom-nav">
+  <a href="nueu-cafe.html" class="cs-nav-link">← Nueu Cafe</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="social-media.html" class="cs-nav-link">Social Media →</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+</body>
+</html>

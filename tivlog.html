@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tivlog — Atom Portfolio</title>
+  <meta name="description" content="TILOG Virtual Expo — online business-matching platform for the TILOG-LOGISTIX trade event. Case study by Teevin Atom Hiranlertprasert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg: #F5F4F0; --surface: #EDECE8; --text: #0D0D0D;
+      --muted: #9B9893; --accent: #2B46E0; --border: rgba(0,0,0,0.09);
+      --font: 'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.4rem; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    /* ── Laptop mockup frame (shared: hero + slider) ── */
+    .cs-hero-band { background: linear-gradient(180deg, var(--green-900), #070C2B); padding: 4.5rem 3rem; overflow: hidden; }
+    .cs-laptop { max-width: 780px; margin: 0 auto; }
+    .cs-laptop-lid {
+      background: #17171C;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-bottom: none;
+      border-radius: 20px 20px 0 0;
+      padding: 18px 16px 16px;
+      position: relative;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 12px 28px rgba(0,0,0,0.35);
+    }
+    .cs-laptop-cam { position: absolute; top: 7px; left: 50%; transform: translateX(-50%); width: 5px; height: 5px; border-radius: 50%; background: #34343d; }
+    .cs-laptop-screen { background: #fff; border-radius: 6px; overflow: hidden; }
+    .cs-laptop-screen img { width: 100%; height: auto; display: block; }
+    .cs-laptop-deck {
+      position: relative;
+      width: calc(100% + 56px);
+      margin-left: -28px;
+      height: 16px;
+      background: linear-gradient(180deg, #26262D, #17171C);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: none;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 26px 52px rgba(0,0,0,0.4);
+    }
+    .cs-laptop-deck::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 96px; height: 7px; background: #101015; border-radius: 0 0 8px 8px; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { padding: 1.5rem 2rem; background: var(--bg); }
+    .cs-meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+
+    .cs-solutions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); margin-top: 2.5rem; }
+    .cs-sol { background: var(--bg); padding: 2rem; }
+    .cs-sol-num { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; display: block; margin-bottom: 0.75rem; }
+    .cs-sol h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .cs-sol p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── Platform screens slider ── */
+    .cs-slider-band { background: linear-gradient(180deg, var(--green-900), #070C2B); padding: 4.5rem 0 3rem; overflow: hidden; }
+    .cs-slider-kicker { text-align: center; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 2.75rem; padding: 0 3rem; }
+    .cs-slider-wrap { position: relative; max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+    .cs-slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; cursor: grab; }
+    .cs-slider::-webkit-scrollbar { display: none; }
+    .cs-slider.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+    .cs-slider.is-dragging img { pointer-events: none; }
+    .cs-slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 3.5rem; }
+    .cs-slide .cs-laptop { width: min(100%, 620px); margin: 0; }
+    .cs-slide-flat img { display: block; width: min(100%, 460px); height: auto; border-radius: 8px; box-shadow: 0 28px 56px rgba(0,0,0,0.45), 0 6px 16px rgba(0,0,0,0.3); }
+    .cs-slide-caption { margin-top: 1.75rem; max-width: 560px; text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .cs-slider-btn {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.28); background: rgba(255,255,255,0.08);
+      color: #fff; font-family: var(--font); font-size: 1.05rem; line-height: 1;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s;
+    }
+    .cs-slider-btn:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+    .cs-slider-btn--prev { left: 0.75rem; }
+    .cs-slider-btn--next { right: 0.75rem; }
+    .cs-slider-hint { margin-top: 2rem; text-align: center; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+    /* ── Responsive screens figure (Screen.png) ── */
+    .cs-screens-figure { max-width: 1000px; margin: 0 auto; padding: 0 3rem 6rem; }
+    .cs-screens-card { background: #E2E7F8; border: 1px solid var(--border); border-radius: 12px; padding: clamp(1.5rem, 4vw, 3rem); }
+    .cs-screens-card img { display: block; width: min(100%, 720px); height: auto; margin: 0 auto; }
+    .cs-screens-caption { margin-top: 1.25rem; text-align: center; font-size: 0.8rem; color: var(--green-700); line-height: 1.7; }
+
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--green-700); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+      .cs-back, .cs-header, .cs-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-solutions { grid-template-columns: 1fr; }
+      .cs-hero-band { padding: 3rem 1.5rem; }
+      .cs-laptop-deck { width: calc(100% + 32px); margin-left: -16px; }
+      .cs-slider-wrap { padding: 0 1.5rem; }
+      .cs-slide { padding: 0 2.75rem; }
+      .cs-slider-btn { width: 38px; height: 38px; }
+      .cs-slider-btn--prev { left: 0.25rem; }
+      .cs-slider-btn--next { right: 0.25rem; }
+      .cs-screens-figure { padding: 0 1.5rem 4.5rem; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">UX / UI <span>·</span> Business Matching <span>·</span> Logistics <span>·</span> 2021</div>
+  <h1 class="cs-title">Tivlog</h1>
+  <p class="cs-lead">TILOG Virtual Expo is a business-matching platform for the logistics industry — an online space where buyers and suppliers meet, schedule appointments, and negotiate over built-in video conferencing.</p>
+</header>
+
+<div class="cs-hero-band">
+  <div class="cs-laptop">
+    <div class="cs-laptop-lid">
+      <div class="cs-laptop-cam"></div>
+      <div class="cs-laptop-screen">
+        <img src="images/projects/tivlog/home%20page.png" alt="TILOG Virtual Expo home page: Online Business Matching headline, event introduction by the Department of International Trade Promotion, photo collage of a virtual handshake between laptops, and a Register Now button">
+      </div>
+    </div>
+    <div class="cs-laptop-deck"></div>
+  </div>
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">Tivlog Co., Ltd.</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Lead UX/UI Designer</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2021</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Deliverables</div><div class="cs-meta-value">UX Research · App Design · Web Platform</div></div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Challenge</div>
+  <h2>More than just
+a video call.</h2>
+  <p>When remote work became the norm, Thai businesses needed collaboration tools — but most reached for international platforms that weren't built with local workflows in mind. Tivlog saw the gap.</p>
+  <p>The challenge was designing a product that could compete with Zoom and Google Meet on ease of use, while offering something they didn't — an integrated scheduling system that actually made sense for the way Thai teams work.</p>
+</section>
+
+<div class="cs-slider-band">
+  <p class="cs-slider-kicker">Three steps to a deal — choose, schedule, meet</p>
+  <div class="cs-slider-wrap">
+    <button class="cs-slider-btn cs-slider-btn--prev" type="button" aria-label="Previous screen">&#8592;</button>
+    <div class="cs-slider" tabindex="0" aria-roledescription="carousel" aria-label="TILOG Virtual Expo platform screens">
+      <figure class="cs-slide cs-slide-flat" role="group" aria-roledescription="slide" aria-label="1 of 3">
+        <img src="images/projects/tivlog/Choose%20company.jpg" alt="Company selection page: five logistics categories with icons, type filters, a company list and the Leo Global Logistic profile with photos, description and a Matching button">
+        <figcaption class="cs-slide-caption">Choose a company — browse suppliers by category and open a full profile before requesting a match.</figcaption>
+      </figure>
+      <figure class="cs-slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+        <div class="cs-laptop">
+          <div class="cs-laptop-lid">
+            <div class="cs-laptop-cam"></div>
+            <div class="cs-laptop-screen">
+              <img src="images/projects/tivlog/schedule.jpg" alt="Appointment schedule screen: a three-day grid of hourly slots marked Booked, Pending or Available next to the Leo Global Logistic company card">
+            </div>
+          </div>
+          <div class="cs-laptop-deck"></div>
+        </div>
+        <figcaption class="cs-slide-caption">Schedule the appointment — availability across the three expo days at a glance.</figcaption>
+      </figure>
+      <figure class="cs-slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+        <div class="cs-laptop">
+          <div class="cs-laptop-lid">
+            <div class="cs-laptop-cam"></div>
+            <div class="cs-laptop-screen">
+              <img src="images/projects/tivlog/VDO_conference.jpg" alt="Video conference screen: two participants in a call with camera, microphone and speaker controls, a 45-minute countdown, and side actions for screen sharing, e-mail and help">
+            </div>
+          </div>
+          <div class="cs-laptop-deck"></div>
+        </div>
+        <figcaption class="cs-slide-caption">Meet and negotiate — a timed video room with screen sharing built into the platform.</figcaption>
+      </figure>
+    </div>
+    <button class="cs-slider-btn cs-slider-btn--next" type="button" aria-label="Next screen">&#8594;</button>
+  </div>
+  <p class="cs-slider-hint">Drag or use the arrows</p>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">02 — Approach</div>
+  <h2>Video. Schedule.
+All in one place.</h2>
+  
+  <div class="cs-solutions">
+    <div class="cs-sol">
+      <span class="cs-sol-num">01</span>
+      <h3>Landing Page</h3>
+      <p>A clear, confident homepage that communicated the product's value in seconds — without overwhelming visitors with feature lists.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">02</span>
+      <h3>Company & Team Setup</h3>
+      <p>Onboarding that lets users set up their organisation and invite teammates quickly — designed to get teams to their first meeting as fast as possible.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">03</span>
+      <h3>Video Conference UI</h3>
+      <p>A clean call interface that kept distractions out of frame — with controls that felt familiar but cleaner than the competition.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">04</span>
+      <h3>Schedule Management</h3>
+      <p>A scheduling view that connected meetings to tasks and availability — the feature that made Tivlog more than just another video tool.</p>
+    </div>
+  </div>
+</section>
+
+<figure class="cs-screens-figure">
+  <div class="cs-screens-card">
+    <img src="images/projects/tivlog/Screen.png" alt="Four tablets showing the TILOG Virtual Expo platform: the Online Business Matching home page, company selection with categories, the appointment schedule grid and the video conference room">
+  </div>
+  <figcaption class="cs-screens-caption">The full journey on one canvas — home, company selection, scheduling and the video room.</figcaption>
+</figure>
+
+<div class="cs-bottom-nav">
+  <a href="k-flo.html" class="cs-nav-link">← K-Flo</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="true-iservice.html" class="cs-nav-link">True iService Max →</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var slider = document.querySelector('.cs-slider');
+  if (!slider) return;
+  var prev = document.querySelector('.cs-slider-btn--prev');
+  var next = document.querySelector('.cs-slider-btn--next');
+  var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function slideBy(dir) {
+    slider.scrollBy({ left: dir * slider.clientWidth, behavior: motionOK ? 'smooth' : 'auto' });
+  }
+  prev.addEventListener('click', function () { slideBy(-1); });
+  next.addEventListener('click', function () { slideBy(1); });
+
+  /* Drag to slide (mouse / pen) */
+  var dragging = false, moved = false, startX = 0, startLeft = 0;
+  slider.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'touch') return; /* native touch scrolling already works */
+    dragging = true; moved = false;
+    startX = e.clientX; startLeft = slider.scrollLeft;
+    slider.setPointerCapture(e.pointerId);
+  });
+  slider.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    var dx = e.clientX - startX;
+    if (Math.abs(dx) > 4) { moved = true; slider.classList.add('is-dragging'); }
+    slider.scrollLeft = startLeft - dx;
+  });
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    slider.classList.remove('is-dragging');
+    if (moved) {
+      var w = slider.clientWidth;
+      var target = Math.round(slider.scrollLeft / w) * w;
+      slider.scrollTo({ left: target, behavior: motionOK ? 'smooth' : 'auto' });
+    }
+  }
+  slider.addEventListener('pointerup', endDrag);
+  slider.addEventListener('pointercancel', endDrag);
+
+  /* Keyboard support when the slider is focused */
+  slider.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); slideBy(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); slideBy(1); }
+  });
+})();
+</script>
+
+</body>
+</html>

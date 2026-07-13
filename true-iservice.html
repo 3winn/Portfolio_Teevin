@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>True iService Max — Atom Portfolio</title>
+  <meta name="description" content="True iService — tablet POS app guiding telecom retail staff through a complete SIM sale. Case study by Teevin Atom Hiranlertprasert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg: #F5F4F0; --surface: #EDECE8; --text: #0D0D0D;
+      --muted: #9B9893; --accent: #2B46E0; --border: rgba(0,0,0,0.09);
+      --font: 'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.4rem; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    .cs-cover { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--surface); }
+    .cs-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { padding: 1.5rem 2rem; background: var(--bg); }
+    .cs-meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+
+    .cs-solutions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); margin-top: 2.5rem; }
+    .cs-sol { background: var(--bg); padding: 2rem; }
+    .cs-sol-num { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; display: block; margin-bottom: 0.75rem; }
+    .cs-sol h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .cs-sol p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    .cs-img-full { width: 100%; overflow: hidden; background: var(--surface); }
+    .cs-img-full img { width: 100%; display: block; object-fit: cover; }
+    .cs-img-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-2col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 4/3; background: var(--surface); }
+    .cs-img-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-3col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 3/4; background: var(--surface); }
+    .cs-img-hscroll-wrap { width: 100%; position: relative; overflow: hidden; }
+    .cs-img-hscroll { display: flex; gap: 3px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; cursor: grab; background: var(--border); }
+    .cs-img-hscroll::-webkit-scrollbar { display: none; }
+    .cs-img-hscroll img { height: 420px; width: auto; flex-shrink: 0; object-fit: cover; display: block; background: var(--surface); pointer-events: none; }
+    .cs-scroll-hint { text-align: center; padding: 0.75rem; font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+
+    .cs-impact { border-top: 1px solid var(--border); padding: 6rem 3rem; background: var(--surface); }
+    .cs-impact-wrap { max-width: 960px; margin: 0 auto; }
+    .cs-impact-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 3rem; }
+    .cs-impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    .cs-stat-num { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.4rem; }
+    .cs-stat-label { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── APP SCREENS SLIDER (adapted from the baania carousel pattern:
+         drag-scroll + prev/next arrows + scroll-snap; images contained,
+         never cropped) ── */
+    .cs-slider { position: relative; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-slider-track { display: flex; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; cursor: grab; -webkit-overflow-scrolling: touch; }
+    .cs-slider-track::-webkit-scrollbar { display: none; }
+    .cs-slider-track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+    .cs-slide { flex: 0 0 100%; scroll-snap-align: center; display: flex; align-items: center; justify-content: center; padding: 3.5rem 4.5rem; }
+    .cs-slide img { max-width: 100%; max-height: min(62vh, 560px); width: auto; height: auto; object-fit: contain; pointer-events: none; }
+    .cs-slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 0; border-radius: 999px; background: rgba(255,255,255,0.92); color: var(--green-900); cursor: pointer; box-shadow: 0 2px 8px rgba(11,18,63,0.15); transition: background 0.2s, opacity 0.2s; }
+    .cs-slider-arrow:hover:not(:disabled) { background: #fff; }
+    .cs-slider-arrow:disabled { opacity: 0.4; cursor: default; }
+    .cs-slider-arrow--prev { left: 1.25rem; }
+    .cs-slider-arrow--next { right: 1.25rem; }
+    .cs-slider-counter { position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--green-700); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+      .cs-back, .cs-header, .cs-section, .cs-impact { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-solutions, .cs-img-2col, .cs-img-3col { grid-template-columns: 1fr; }
+      .cs-impact-grid { grid-template-columns: 1fr 1fr; }
+      .cs-slide { padding: 2.5rem 1.25rem 3rem; }
+      .cs-slider-arrow--prev { left: 0.5rem; }
+      .cs-slider-arrow--next { right: 0.5rem; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">UX / UI <span>·</span> Telecom <span>·</span> App <span>·</span> 2019</div>
+  <h1 class="cs-title">True iService Max</h1>
+  <p class="cs-lead">True Corporation needed a unified service hub — one place where customers could manage their subscriptions, activate SIMs, browse a product catalog, and get support without having to call in.</p>
+</header>
+
+<div class="cs-cover">
+  <img src="images/projects/true-iservice/Screen1.jpg" alt="True iService Max">
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">True Corporation</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">UX/UI Designer</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2019</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Deliverables</div><div class="cs-meta-value">UX Research · App Design · Service Platform</div></div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Challenge</div>
+  <h2>One place for
+everything True.</h2>
+  <p>True's services were spread across multiple apps and call centre touchpoints. Customers switching between plans, activating new SIMs, or looking for accessories had to navigate several different systems — and often gave up and called support instead.</p>
+  <p>The brief was to design a service platform that unified the key customer journeys, reduced call centre load, and made True's product ecosystem feel accessible rather than overwhelming.</p>
+</section>
+
+<section class="cs-section">
+  <div class="cs-section-label">02 — Approach</div>
+  <h2>Simple to navigate.
+Easy to act on.</h2>
+  
+  <div class="cs-solutions">
+    <div class="cs-sol">
+      <span class="cs-sol-num">01</span>
+      <h3>Service Home Screen</h3>
+      <p>A dashboard that surfaces the most important actions — plan status, usage, and quick links to top tasks — without burying them under promotions.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">02</span>
+      <h3>SIM Activation & Verification</h3>
+      <p>A step-by-step flow for new customers activating a SIM — designed to be clear enough to complete without needing help from a store staff.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">03</span>
+      <h3>Product Catalog</h3>
+      <p>A browsable catalog of True's device and accessory range — with filters and a layout that made comparison easy even on a small screen.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">04</span>
+      <h3>Support & Self-Service</h3>
+      <p>Common support requests routed to self-service flows — reducing the number of contacts that needed a human to resolve.</p>
+    </div>
+  </div>
+</section>
+
+<div style="padding:0.75rem 3rem 0.75rem;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);">App screens — swipe through</div>
+<div class="cs-slider">
+  <button class="cs-slider-arrow cs-slider-arrow--prev" type="button" aria-label="Previous screen" disabled>
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 3L5.5 9l6 6"/></svg>
+  </button>
+  <div class="cs-slider-track" id="ti-slider-track" aria-label="True iService Max app screens" tabindex="0">
+    <div class="cs-slide"><img src="images/projects/true-iservice/Vertify.png" alt="Verification flow"></div>
+    <div class="cs-slide"><img src="images/projects/true-iservice/Sim.png" alt="SIM activation"></div>
+    <div class="cs-slide"><img src="images/projects/true-iservice/Catalog.png" alt="Product catalog"></div>
+  </div>
+  <button class="cs-slider-arrow cs-slider-arrow--next" type="button" aria-label="Next screen">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3l6 6-6 6"/></svg>
+  </button>
+  <div class="cs-slider-counter" id="ti-slider-counter" aria-live="polite">1 / 3</div>
+</div>
+<div class="cs-scroll-hint">← Swipe or drag →</div>
+
+<section class="cs-impact">
+  <div class="cs-impact-wrap">
+    <div class="cs-impact-label">03 — Outcomes</div>
+    <div class="cs-impact-grid">
+      <div>
+        <div class="cs-stat-num">↓</div>
+        <div class="cs-stat-label">Reduced customer service contacts for routine requests</div>
+      </div>
+      <div>
+        <div class="cs-stat-num">1</div>
+        <div class="cs-stat-label">Unified service hub replacing multiple separate apps</div>
+      </div>
+      <div>
+        <div class="cs-stat-num">4</div>
+        <div class="cs-stat-label">Core journeys — dashboard, SIM, catalog, support</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-bottom-nav">
+  <a href="tivlog.html" class="cs-nav-link">← Tivlog</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="craftman-roastery.html" class="cs-nav-link">Craftman Roastery →</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+<script>
+/* App-screens slider: drag-scroll + arrows + scroll-snap
+   (goTo/prev-next approach adapted from the baania carousel) */
+(function () {
+  const track = document.getElementById('ti-slider-track');
+  if (!track) return;
+  const prev = document.querySelector('.cs-slider-arrow--prev');
+  const next = document.querySelector('.cs-slider-arrow--next');
+  const counter = document.getElementById('ti-slider-counter');
+  const count = track.children.length;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function index() {
+    return Math.max(0, Math.min(count - 1, Math.round(track.scrollLeft / track.clientWidth)));
+  }
+  function update() {
+    const i = index();
+    prev.disabled = i <= 0;
+    next.disabled = i >= count - 1;
+    if (counter) counter.textContent = (i + 1) + ' / ' + count;
+  }
+  function goTo(i) {
+    const n = Math.max(0, Math.min(count - 1, i));
+    track.scrollTo({ left: n * track.clientWidth, behavior: reduced ? 'auto' : 'smooth' });
+  }
+  prev.addEventListener('click', function () { goTo(index() - 1); });
+  next.addEventListener('click', function () { goTo(index() + 1); });
+  track.addEventListener('scroll', function () { requestAnimationFrame(update); }, { passive: true });
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(index() - 1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index() + 1); }
+  });
+
+  /* Mouse drag-to-scroll (snap disabled while dragging, re-snap on release) */
+  let down = false, startX = 0, startLeft = 0;
+  track.addEventListener('mousedown', function (e) {
+    down = true;
+    startX = e.pageX;
+    startLeft = track.scrollLeft;
+    track.classList.add('is-dragging');
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function (e) {
+    if (!down) return;
+    track.scrollLeft = startLeft - (e.pageX - startX);
+  });
+  document.addEventListener('mouseup', function () {
+    if (!down) return;
+    down = false;
+    track.classList.remove('is-dragging');
+    goTo(index());   /* settle on the nearest slide */
+  });
+
+  update();
+  window.addEventListener('resize', function () { goTo(index()); });
+})();
+</script>
+
+</body>
+</html>

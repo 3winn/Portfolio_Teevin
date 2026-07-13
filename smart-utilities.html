@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Utilities — Atom Portfolio</title>
+  <meta name="description" content="Digital utility management platform — UX/UI case study by Teevin Atom Hiranlertprasert">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg:      #F5F4F0;   /* --cream */
+      --surface: #EDECE8;
+      --text:    #0D0D0D;   /* --ink-900 */
+      --muted:   #9B9893;   /* --ink-300 */
+      --accent:  #2B46E0;
+      --border:  rgba(0,0,0,0.09);   /* --line */
+      --font:    'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.6rem; opacity: 0.4; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    .cs-cover { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--surface); }
+    .cs-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { background: var(--bg); padding: 1.75rem 2rem; }
+    .cs-meta-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.9; max-width: 620px; }
+    .cs-section p + p { margin-top: 1rem; }
+
+    .cs-solutions { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 4rem; margin-top: 3rem; }
+    .cs-sol-num { font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; display: block; margin-bottom: 0.75rem; }
+    .cs-sol h3 { font-size: 1.05rem; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 0.65rem; }
+    .cs-sol p { font-size: 0.875rem; color: var(--muted); line-height: 1.8; }
+
+    .cs-img-full { width: 100%; background: var(--surface); overflow: hidden; }
+    .cs-img-full img { width: 100%; display: block; object-fit: cover; }
+
+    /* ── DESIGN ELEMENT ── */
+    .cs-design-element { width: 100%; overflow: hidden; line-height: 0; }
+    .cs-design-element img { width: 100%; display: block; }
+
+    .cs-img-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-2col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 4/3; background: var(--surface); }
+
+    .cs-img-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-3col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 3/4; background: var(--surface); }
+
+    .cs-img-asym { display: grid; grid-template-columns: 1.6fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-asym img { width: 100%; display: block; object-fit: cover; background: var(--surface); }
+    .cs-img-asym img:first-child { aspect-ratio: 4/3; }
+    .cs-img-asym img:last-child  { aspect-ratio: 3/4; }
+
+    /* ── CITIZEN SPLIT ── */
+    .cs-citizen-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 7rem;
+      padding: 5rem 4rem;
+      background: var(--surface);
+    }
+    .cs-citizen-img img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+    .cs-citizen-text-headline {
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .cs-citizen-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 400px;
+    }
+
+    /* ── OCR STEPS ── */
+    .cs-ocr-steps {
+      padding: 5rem 3rem;
+      background: var(--bg);
+      max-width: 100%;
+    }
+    .cs-ocr-steps-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+    }
+    .cs-ocr-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+    .cs-ocr-num {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .cs-ocr-grid h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+    .cs-ocr-grid p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .cs-ocr-painpoint {
+      border-left: 2px solid var(--accent);
+      padding: 1.25rem 1.75rem;
+      background: var(--surface);
+      border-radius: 0 8px 8px 0;
+    }
+    .cs-ocr-pain-label {
+      display: block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .cs-ocr-painpoint p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 700px;
+    }
+
+    /* ── PHONE MOCKUP SHOWCASE ── */
+    .phone-showcase {
+      width: 100%;
+      padding: 6rem 3rem;
+      background: #0D0D0D;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+    .phone-showcase::before {
+      content: 'OCR Meter Reading Flow';
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+    .phone-float { flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .phone-float:nth-child(1) { transform: rotate(-7deg) translateY(36px); }
+    .phone-float:nth-child(2) { transform: translateY(-24px); z-index: 2; }
+    .phone-float:nth-child(3) { transform: rotate(7deg) translateY(16px); }
+    .phone-showcase:hover .phone-float:nth-child(1) { transform: rotate(-5deg) translateY(28px); }
+    .phone-showcase:hover .phone-float:nth-child(2) { transform: translateY(-32px); }
+    .phone-showcase:hover .phone-float:nth-child(3) { transform: rotate(5deg) translateY(8px); }
+    .phone-body {
+      width: 200px;
+      background: #111;
+      border-radius: 42px;
+      padding: 12px;
+      border: 8px solid #1f1f1f;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.07),
+        0 32px 64px rgba(0,0,0,0.5),
+        0 8px 20px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .phone-notch {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 66px;
+      height: 18px;
+      background: #111;
+      border-radius: 0 0 12px 12px;
+      z-index: 5;
+    }
+    .phone-screen {
+      aspect-ratio: 9/19.5;
+      overflow: hidden;
+      border-radius: 32px;
+      background: #000;
+    }
+    .phone-screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── HORIZONTAL SCROLL STRIP ── */
+    .cs-img-hscroll-wrap {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-img-hscroll-wrap::before,
+    .cs-img-hscroll-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .cs-img-hscroll-wrap::before { left: 0;  background: linear-gradient(to right, var(--bg) 0%, transparent 100%); }
+    .cs-img-hscroll-wrap::after  { right: 0; background: linear-gradient(to left,  var(--bg) 0%, transparent 100%); }
+    .cs-img-hscroll {
+      display: flex;
+      gap: 3px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+      background: var(--border);
+    }
+    .cs-img-hscroll::-webkit-scrollbar { display: none; }
+    .cs-img-hscroll:active { cursor: grabbing; }
+    .cs-img-hscroll img {
+      height: 480px;
+      width: auto;
+      flex-shrink: 0;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      background: var(--surface);
+    }
+    .cs-scroll-hint {
+      text-align: center;
+      padding: 0.9rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--bg);
+    }
+
+    .cs-impact { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 6rem 3rem; background: var(--surface); }
+    .cs-impact-wrap { max-width: 960px; margin: 0 auto; }
+    .cs-impact-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 3rem; }
+    .cs-impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    .cs-stat-num { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.4rem; }
+    .cs-stat-label { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--green-700); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: flex-end; }
+      .cs-back, .cs-header, .cs-section, .cs-impact { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-solutions, .cs-img-2col, .cs-img-3col, .cs-img-asym { grid-template-columns: 1fr; }
+      .cs-citizen-split { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem; }
+      .cs-ocr-grid { grid-template-columns: 1fr; }
+      .cs-impact-grid { grid-template-columns: 1fr 1fr; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html#work">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">
+    UX / UI Design <span>·</span> Gov Tech <span>·</span> Mobile <span>·</span> 2020 – 2022
+  </div>
+  <h1 class="cs-title">Smart Utilities</h1>
+  <p class="cs-lead">
+    Thailand's municipalities collect utility fees for water and waste — most of it still tracked on paper,
+    collected in cash, and filed by hand. For the citizens paying those bills, the experience was just as broken.
+    This platform changes both sides at once: a unified system for water and garbage fees that gives
+    operations full accountability and citizens the convenience they've never had.
+  </p>
+</header>
+
+<div class="cs-cover">
+  <img src="images/projects/smart-utilities/Dashboard.jpg" alt="Smart Utilities dashboard">
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item">
+    <div class="cs-meta-label">Client</div>
+    <div class="cs-meta-value">Smart Utilities Co., Ltd.</div>
+  </div>
+  <div class="cs-meta-item">
+    <div class="cs-meta-label">Role</div>
+    <div class="cs-meta-value">Lead UX/UI Designer</div>
+  </div>
+  <div class="cs-meta-item">
+    <div class="cs-meta-label">Timeline</div>
+    <div class="cs-meta-value">2020 – 2022</div>
+  </div>
+  <div class="cs-meta-item">
+    <div class="cs-meta-label">Deliverables</div>
+    <div class="cs-meta-value">UX Research · Handheld App · Citizen Portal · Admin Dashboard</div>
+  </div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Challenge</div>
+  <h2>Paper. Cash.<br>No record.<br>No trust.</h2>
+  <p>
+    Municipal staff were accustomed to the old way of working — collecting meter readings on paper,
+    gathering payments in cash through field teams, and filing reports manually at the end of each day.
+    It was a system built on habit, not accountability.
+  </p>
+  <p>
+    The result: no audit trail, no transparency, and a growing gap between what was collected in the field
+    and what was reported at the office. Resources were wasted, errors were invisible, and both staff
+    and citizens had no reliable way to verify anything.
+  </p>
+  <p>
+    We built a platform that replaces paper with digital reports, enables automated email delivery of statements,
+    and gives every level of the organisation — from field inspectors to municipal directors — a complete,
+    auditable record of every transaction, reading, and request. Any time. Any device.
+  </p>
+</section>
+
+<div class="cs-design-element">
+  <img src="images/projects/smart-utilities/Design%20element.png" alt="Smart Utilities — full platform overview">
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">02 — Approach</div>
+  <h2>Three touchpoints.<br>One connected system.</h2>
+  <p style="margin-bottom:2.5rem;color:var(--muted);line-height:1.8;max-width:680px;">
+    Given the scale of the project — three distinct user groups, two services, multiple municipalities —
+    design decisions had real operational consequences. I ran usability sessions with operations staff
+    to map exactly what they needed visible in the dashboard day-to-day, rather than assuming.
+    For the handheld app, research revealed that inspectors' biggest pain wasn't the scan itself —
+    it was knowledge transfer. Senior staff carried years of property knowledge in their heads,
+    and when they left, that knowledge left with them. Adding property history and map pinning
+    to the handheld wasn't a feature request; it was a direct response to that finding.
+    New inspectors could now pick up a route cold and work at full speed from day one.
+  </p>
+  <div class="cs-solutions">
+    <div class="cs-sol">
+      <span class="cs-sol-num">01</span>
+      <h3>Operations Dashboard</h3>
+      <p>Staff can generate reports and export them via email at any time — no more end-of-month paper stacks.
+      User accounts can be transferred between addresses with a few taps, and a real-time dashboard gives
+      municipal directors a live overview of both water and waste services across the entire district.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">02</span>
+      <h3>Citizen Self-Service</h3>
+      <p>Citizens pay water and garbage fees online from their phone — no travel, no queues, no office hours.
+      They can review usage history month by month, track payment records, and submit service requests directly.
+      What once required a trip to the municipality now takes two taps.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">03</span>
+      <h3>Handheld Inspector App</h3>
+      <p>Designed for the field — not just for scanning. Each property comes with its full service history,
+      map pin, and account notes, so a new inspector can walk any route on day one without relying on
+      a senior colleague to show them around. Knowledge that used to live in people's heads
+      now lives in the app.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cs-citizen-split">
+  <div class="cs-citizen-img">
+    <img src="images/projects/smart-utilities/Citizen.jpg" alt="Citizen portal interface">
+  </div>
+  <div class="cs-citizen-text">
+    <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:1rem;">02 — Citizen Portal</div>
+    <h2 class="cs-citizen-text-headline">Built for<br>the people<br>it serves.</h2>
+    <p>
+      Citizens can now check their water usage history, view itemised bills, and pay online — all without
+      setting foot in a municipal office. Usage anomalies surface automatically, so residents know about
+      a leak before it turns into a surprise bill. Transparency that builds trust.
+      Convenience that changes daily life.
+    </p>
+  </div>
+</div>
+
+<!-- OCR screens — phone mockup showcase -->
+<div class="phone-showcase">
+  <div class="phone-float">
+    <div class="phone-body">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <img src="images/projects/smart-utilities/OCR_1.png" alt="OCR step 1 — locate property">
+      </div>
+    </div>
+  </div>
+  <div class="phone-float">
+    <div class="phone-body">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <img src="images/projects/smart-utilities/OCR_2.png" alt="OCR step 2 — scan meter">
+      </div>
+    </div>
+  </div>
+  <div class="phone-float">
+    <div class="phone-body">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <img src="images/projects/smart-utilities/OCR_3.png" alt="OCR step 3 — verify & log">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OCR 3-step narrative -->
+<section class="cs-ocr-steps">
+  <div class="cs-ocr-steps-label">How it works — Three steps, fully audited</div>
+  <div class="cs-ocr-grid">
+    <div>
+      <span class="cs-ocr-num">01 — Locate</span>
+      <h3>Find the property</h3>
+      <p>The inspector opens their route for the day, selects the address, and sees the full account history before arriving — no paper routes, no lost records.</p>
+    </div>
+    <div>
+      <span class="cs-ocr-num">02 — Scan</span>
+      <h3>Read the meter</h3>
+      <p>Point the camera at the meter dial. OCR captures the digits automatically — no manual transcription, no misread numbers, no illegible handwriting.</p>
+    </div>
+    <div>
+      <span class="cs-ocr-num">03 — Verify</span>
+      <h3>Correct &amp; commit</h3>
+      <p>If a reading looks unclear, the inspector can override it manually. Every correction is timestamped, tagged with a user ID, and stored permanently in the audit log.</p>
+    </div>
+  </div>
+  <div class="cs-ocr-painpoint">
+    <span class="cs-ocr-pain-label">Why this mattered</span>
+    <p>
+      The old paper system had no accountability. Readings could be altered, skipped, or simply lost — and there was no way for operations or citizens to know.
+      That opacity eroded public trust and created conditions for billing fraud.
+      The audit trail changes that: every reading, every correction, every inspector is on record. Permanently.
+    </p>
+  </div>
+</section>
+
+<!-- Horizontal drag-to-scroll image strip -->
+<div style="padding: 2.5rem 3rem 0.75rem; background: var(--bg);">
+  <div style="font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);">A look at the platform</div>
+</div>
+<div class="cs-img-hscroll-wrap">
+  <div class="cs-img-hscroll" id="hscroll">
+    <img src="images/projects/smart-utilities/Water_2.3.jpg" alt="Water meter context">
+    <img src="images/projects/smart-utilities/add%20user.png"  alt="Add user flow">
+    <img src="images/projects/smart-utilities/pay.jpg" alt="Payment flow">
+    <img src="images/projects/smart-utilities/Dashboard.jpg" alt="Admin dashboard">
+  </div>
+</div>
+<div class="cs-scroll-hint">← Drag to explore →</div>
+
+<section class="cs-impact">
+  <div class="cs-impact-wrap">
+    <div class="cs-impact-label">03 — Outcomes</div>
+
+    <!-- Success case callout -->
+    <div style="margin-bottom: 3.5rem; padding: 2.5rem; background: var(--bg); border-radius: 12px; border-left: 3px solid var(--accent);">
+      <div style="font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.75rem;">Success Case — Koh Samui Island</div>
+      <p style="font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.4; color: var(--text); margin-bottom: 1rem;">
+        Monthly revenue grew from ฿900,000 to ฿8 million<br>in a single district — without adding a single staff member.
+      </p>
+      <p style="font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-width: 600px;">
+        Before the platform, citizens avoided paying bills because the process was slow, opaque, and required a trip to the municipal office.
+        Once they could view their usage history, receive digital receipts, and pay from their phones,
+        trust replaced friction — and payment rates followed.
+      </p>
+    </div>
+
+    <div class="cs-impact-grid">
+      <div>
+        <div class="cs-stat-num">8.9×</div>
+        <div class="cs-stat-label">Revenue growth in Koh Samui — ฿0.9M → ฿8M/month</div>
+      </div>
+      <div>
+        <div class="cs-stat-num">3</div>
+        <div class="cs-stat-label">User groups served — field inspectors, citizens, operations</div>
+      </div>
+      <div>
+        <div class="cs-stat-num">100%</div>
+        <div class="cs-stat-label">Digital receipts — every transaction verified and traceable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-bottom-nav">
+  <a href="nt-smart-life.html" class="cs-nav-link">← NT Smart Life</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="cat-marketing.html" class="cs-nav-link">CAT Market 4.0 →</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+<script>
+/* Horizontal drag-to-scroll */
+(function() {
+  const el = document.getElementById('hscroll');
+  if (!el) return;
+  let isDown = false, startX, scrollLeft;
+  el.addEventListener('mousedown', function(e) {
+    isDown = true;
+    el.style.cursor = 'grabbing';
+    startX = e.pageX - el.offsetLeft;
+    scrollLeft = el.scrollLeft;
+    e.preventDefault();
+  });
+  document.addEventListener('mouseup', function() {
+    isDown = false;
+    el.style.cursor = 'grab';
+  });
+  document.addEventListener('mousemove', function(e) {
+    if (!isDown) return;
+    const x = e.pageX - el.offsetLeft;
+    el.scrollLeft = scrollLeft - (x - startX) * 1.1;
+  });
+  /* Touch */
+  let touchStartX, touchScrollLeft;
+  el.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].pageX;
+    touchScrollLeft = el.scrollLeft;
+  }, { passive: true });
+  el.addEventListener('touchmove', function(e) {
+    const dx = touchStartX - e.touches[0].pageX;
+    el.scrollLeft = touchScrollLeft + dx;
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

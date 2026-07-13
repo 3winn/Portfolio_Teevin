@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NT Smart Life — Atom Portfolio</title>
+  <meta name="description" content="Key visual & exhibition identity for NT Smart Life — brand campaign by Teevin Atom Hiranlertprasert">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Aligned with the main site's palette (css/style.css) */
+      --green-900: #0B123F;
+      --green-700: #2033B0;
+      --green-500: #2B46E0;
+      --bg:      #F5F4F0;
+      --surface: #EDECE8;
+      --text:    #0D0D0D;
+      --muted:   #9B9893;
+      --accent:  #2B46E0;
+      --border:  rgba(0,0,0,0.09);
+      --font: 'Poppins', 'Noto Sans Thai', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.125rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
+    .nav-logo sup { font-size: 0.6em; color: var(--green-700); vertical-align: super; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--green-700); }
+    .nav-cta { color: #fff !important; background: var(--green-700); padding: 0.55rem 1.25rem; border-radius: 6px; transition: background 0.2s, transform 0.2s; }
+    .nav-cta:hover { background: var(--green-500); transform: translateY(-1px); }
+
+    /* LAYOUT */
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.6rem; opacity: 0.4; }
+    .cs-title { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    .cs-cover { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--surface); }
+    .cs-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { background: var(--bg); padding: 1.75rem 2rem; }
+    .cs-meta-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', 'Noto Sans Thai', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.9; max-width: 620px; }
+    .cs-section p + p { margin-top: 1rem; }
+
+    .cs-solutions { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem 4rem; margin-top: 3rem; }
+    .cs-sol-num { font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; display: block; margin-bottom: 0.75rem; }
+    .cs-sol h3 { font-size: 1.05rem; font-weight: 500; letter-spacing: -0.02em; margin-bottom: 0.65rem; }
+    .cs-sol p { font-size: 0.875rem; color: var(--muted); line-height: 1.8; }
+
+    /* IMAGE LAYOUTS */
+    .cs-img-full { width: 100%; background: var(--surface); overflow: hidden; }
+    .cs-img-full img { width: 100%; display: block; object-fit: cover; }
+
+    .cs-img-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-2col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 4/3; background: var(--surface); }
+
+    .cs-img-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-3col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 3/4; background: var(--surface); }
+
+    /* 6-grid for the 6 KV images — card style, full images */
+    .cs-img-6grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; background: var(--bg); padding: 3rem; }
+    .kv-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.08); padding: 1.25rem; }
+    .kv-card img { width: 100%; display: block; }
+
+    /* BROCHURE + LEAFLET SPLIT */
+    .cs-brochure-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 580px; }
+    .cs-brochure-left { overflow: hidden; background: var(--surface); }
+    .cs-brochure-left img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cs-leaflet-right { overflow: hidden; }
+    .cs-leaflet-item { height: 100%; }
+    .cs-leaflet-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .cs-img-asym { display: grid; grid-template-columns: 1fr 1.4fr; gap: 2px; background: var(--border); }
+    .cs-img-asym img { width: 100%; display: block; object-fit: cover; background: var(--surface); }
+    .cs-img-asym img:first-child { aspect-ratio: 3/4; }
+    .cs-img-asym img:last-child  { aspect-ratio: 4/3; }
+
+    /* IMPACT */
+    .cs-impact { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 0; padding: 6rem 3rem; background: var(--surface); }
+    .cs-impact-wrap { max-width: 960px; margin: 0 auto; }
+    .cs-impact-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 3rem; }
+    .cs-impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    .cs-stat-num { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.4rem; }
+    .cs-stat-label { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+    /* BOTTOM NAV */
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--green-700); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--green-700); }
+
+    /* FOOTER */
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .cs-back, .cs-header, .cs-section, .cs-impact { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .cs-meta { grid-template-columns: 1fr 1fr; }
+      .cs-solutions, .cs-img-2col, .cs-img-3col, .cs-img-6grid, .cs-img-asym, .cs-brochure-split { grid-template-columns: 1fr; }
+      .cs-img-6grid { padding: 1.5rem; gap: 1rem; }
+      .cs-leaflet-right { padding: 1.5rem; }
+      .cs-impact-grid { grid-template-columns: 1fr 1fr; }
+      .cs-bottom-nav { padding: 2.5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Primary">
+  <a href="index.html" class="nav-logo" aria-label="ATOM — home">ATOM<sup>&reg;</sup></a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#process">Process</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Let's talk</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">
+    Branding <span>·</span> Campaign <span>·</span> Key Visual <span>·</span> Exhibition <span>·</span> 2021
+  </div>
+  <h1 class="cs-title">NT Smart Life</h1>
+  <p class="cs-lead">
+    National Telecom was entering a new era — six smart services, one unified story.
+    The challenge was making government infrastructure feel human, forward-thinking, and worth believing in.
+  </p>
+</header>
+
+<div class="cs-cover">
+  <img src="images/projects/nt-life/Roll-up/RollUp_6B_20211130.jpg" alt="NT Smart Life — Roll-up banner">
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item">
+    <div class="cs-meta-label">Client</div>
+    <div class="cs-meta-value">National Telecom (NT)</div>
+  </div>
+  <div class="cs-meta-item">
+    <div class="cs-meta-label">Role</div>
+    <div class="cs-meta-value">Art Director · Visual Designer</div>
+  </div>
+  <div class="cs-meta-item">
+    <div class="cs-meta-label">Timeline</div>
+    <div class="cs-meta-value">2021</div>
+  </div>
+  <div class="cs-meta-item">
+    <div class="cs-meta-label">Deliverables</div>
+    <div class="cs-meta-value">Key Visuals · Brochure · Exhibition Identity</div>
+  </div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Challenge</div>
+  <h2>Six services.<br>One coherent brand.</h2>
+  <p>
+    NT Smart Life is an umbrella platform covering Business, Healthcare, Education, Environment,
+    Industrial, and Tracking — six distinct services that needed to feel like siblings, not strangers.
+  </p>
+  <p>
+    The visual system had to work at scale: from exhibition halls to digital banners,
+    from printed brochures to screens — all while conveying the seriousness of a state enterprise
+    and the optimism of a digital-first future.
+  </p>
+</section>
+
+<!-- 6 KV images in card grid -->
+<div class="cs-img-6grid">
+  <div class="kv-card"><img src="images/projects/nt-life/KV/Smart-Business.jpg"     alt="Smart Business"></div>
+  <div class="kv-card"><img src="images/projects/nt-life/KV/Smart-Healthcare.jpg"   alt="Smart Healthcare"></div>
+  <div class="kv-card"><img src="images/projects/nt-life/KV/Smart-Education.jpg"    alt="Smart Education"></div>
+  <div class="kv-card"><img src="images/projects/nt-life/KV/Smart-Environment.jpg"  alt="Smart Environment"></div>
+  <div class="kv-card"><img src="images/projects/nt-life/KV/Smart-Industrial.jpg"   alt="Smart Industrial"></div>
+  <div class="kv-card"><img src="images/projects/nt-life/KV/Smart-Tracking.jpg"     alt="Smart Tracking"></div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">02 — Approach</div>
+  <h2>A visual language<br>built to scale across six worlds.</h2>
+  <div class="cs-solutions">
+    <div class="cs-sol">
+      <span class="cs-sol-num">01</span>
+      <h3>Unified Color System</h3>
+      <p>Each service line gets its own signature color — distinct enough to stand alone, harmonious enough to sit together. A shared typographic grid keeps them in the same family.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">02</span>
+      <h3>Key Visual Direction</h3>
+      <p>Six campaign KVs built on a consistent visual logic: human context + smart technology + NT brand mark. From industrial sites to hospital wards — every category feels purposeful.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">03</span>
+      <h3>Exhibition Identity</h3>
+      <p>The system was designed for real space. Large-format panels, booth backdrops, and wayfinding — all adapted from the same visual DNA without losing clarity at any size.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">04</span>
+      <h3>Brochure System</h3>
+      <p>A branded brochure suite that communicates NT's full service portfolio — structured for sales teams, exhibition visitors, and executive presentations alike.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cs-brochure-split">
+  <div class="cs-brochure-left">
+    <img src="images/projects/nt-life/BROCHURE/mockup.jpg" alt="NT Smart Life brochure mockup">
+  </div>
+  <div class="cs-leaflet-right">
+    <div class="cs-leaflet-item">
+      <img src="images/projects/nt-life/BROCHURE/Leaflet/leaflet%20mock%20up.png" alt="e-Doc Workflow leaflet mockup">
+    </div>
+  </div>
+</div>
+
+
+<div class="cs-bottom-nav">
+  <a href="baania.html" class="cs-nav-link">← Baania.com</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="smart-utilities.html" class="cs-nav-link">Smart Utilities →</a>
+
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+</body>
+</html>

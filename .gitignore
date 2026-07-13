@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Original uncompressed images (local backup only — 201MB, not for deploy)
+images-original/
+
+# Local tool settings
+.claude/settings.local.json

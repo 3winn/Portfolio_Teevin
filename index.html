@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atom — UX/UI &amp; Visual Designer in Bangkok</title>
+  <meta name="description" content="Portfolio of Teevin &quot;Atom&quot; Hiranlertprasert, a Bangkok-based UX/UI and visual designer with 10+ years across product design, branding and campaigns.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="site-nav">
+    <div class="container">
+      <a class="wordmark" href="#top" aria-label="ATOM — home">ATOM<sup>®</sup></a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="nav-cta" href="#contact">Let's talk</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Mobile">
+      <ul>
+        <li><a href="#work" style="--i:0">Work</a></li>
+        <li><a href="#about" style="--i:1">About</a></li>
+        <li><a href="#services" style="--i:2">Services</a></li>
+        <li><a href="#process" style="--i:3">Process</a></li>
+        <li><a href="#contact" style="--i:4">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="mobile-cta" href="#contact">Let's talk</a>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="Introduction">
+
+      <!-- Hero media layer: the navy silk-wave banner (headline is baked
+           into the artwork) + light sheen sweep + constellation canvas.
+           FUTURE VIDEO SLOT: when the hero video is ready, replace ALL
+           children of .hero-media below with the video element — keep
+           .hero-media as the positioning wrapper and leave the copy
+           layer untouched:
+             <video class="hero-video" autoplay muted loop playsinline
+                    poster="images/hero/Hero_banner.jpg">
+               <source src="videos/hero.mp4" type="video/mp4">
+             </video>
+           Then delete initHeroField() in js/main.js. -->
+      <div class="hero-media" aria-hidden="true">
+        <img class="hero-banner" src="images/hero/Hero_banner.jpg" alt="" fetchpriority="high">
+        <div class="hero-sheen"></div>
+        <canvas id="hero-canvas"></canvas>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <!-- The headline is baked into the banner artwork on wide screens:
+               the h1 + lead stay in the DOM (visually hidden) for
+               accessibility/SEO and become visible again on narrow screens
+               where the crop pushes the baked text off-frame. -->
+          <span class="eyebrow hero-anim" style="--i:0">UX/UI &amp; Visual Designer — Bangkok</span>
+          <h1 class="display hero-headline hero-anim" style="--i:1">Where insights meet empathy, ensuring every data point drives <span class="accent-word">business success</span> and <span class="accent-word">user happiness.</span></h1>
+          <p class="hero-lead hero-anim" style="--i:2">Ten-plus years of UX/UI, branding and campaign design for Thailand's leading tech, telecom and real-estate companies.</p>
+          <div class="hero-actions hero-anim" style="--i:3">
+            <a class="btn btn--primary" href="#work">View work</a>
+            <a class="btn btn--ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true">
+        <span class="cue-line"></span>
+        <span class="caption">Scroll</span>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-head reveal">
+            <span class="eyebrow">About</span>
+            <h2 class="section-title" id="about-title">Design that ships.</h2>
+          </div>
+          <div class="about-copy reveal" style="--i:1">
+            <p>I'm Atom — Teevin Hiranlertprasert — a designer based in Bangkok. Over ten-plus years I've worked across four disciplines: product UX/UI, brand identity, graphic design and marketing content. I've led design on a government utility platform that helped grow Koh Samui's monthly revenue from ฿0.9M to ฿8M, shaped the UX of Baania's real-estate marketplace, and built a big-data platform UI for the Ministry of Culture.</p>
+            <p>The range runs wide on purpose: service apps for True and National Telecom, a business-matching expo platform for logistics, an NFT card game, brand identities for cafes in Bangkok and a hotel in Siem Reap, and five years of social content for national brands like 7-Eleven, SCG, Arabus and Weber. Different industries, same standard. Good design is not the prettiest version. It is the version that actually ships.</p>
+          </div>
+        </div>
+        <ul class="stats reveal">
+          <li><span class="stat-num">10+</span><span class="stat-label caption">Years experience</span></li>
+          <li><span class="stat-num">18+</span><span class="stat-label caption">Selected projects</span></li>
+          <li><span class="stat-num">4</span><span class="stat-label caption">Disciplines</span></li>
+          <li><span class="stat-num">20+</span><span class="stat-label caption">Clients worked with</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" class="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Services</span>
+          <h2 class="section-title" id="services-title">What I do</h2>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal" style="--i:0">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <h3>UX/UI Design</h3>
+            <p>Research, flows and interfaces for web and mobile — from a government utility platform and a ministry's big-data dashboard to real-estate marketplaces, telecom service apps and a virtual logistics expo.</p>
+            <div class="service-tags">
+              <span class="tag-pill">Platforms</span>
+              <span class="tag-pill">Mobile apps</span>
+              <span class="tag-pill">Dashboards</span>
+            </div>
+          </article>
+          <article class="service-card reveal" style="--i:1">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 2 7v10l10 5 10-5V7l-10-5z"/><path d="M2 7l10 5 10-5M12 12v10"/></svg>
+            <h3>Branding</h3>
+            <p>Identity systems from logo to packaging to the space itself. Cafes, a Siem Reap hotel, a roastery inside a historic house and a government academy — brands built to survive the real world, not just the pitch deck.</p>
+            <div class="service-tags">
+              <span class="tag-pill">Logo</span>
+              <span class="tag-pill">Identity</span>
+              <span class="tag-pill">Packaging</span>
+            </div>
+          </article>
+          <article class="service-card reveal" style="--i:2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            <h3>Graphic Design</h3>
+            <p>Editorial, print and exhibition graphics with typographic care — university bulletins, an investment book, airline campaign leaflets and event identities. Bilingual layouts that hold up in Thai and English.</p>
+            <div class="service-tags">
+              <span class="tag-pill">Editorial</span>
+              <span class="tag-pill">Print</span>
+              <span class="tag-pill">Exhibition</span>
+            </div>
+          </article>
+          <article class="service-card reveal" style="--i:3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-7-7 18-2.5-7.5L3 11z"/></svg>
+            <h3>Creative &amp; Social</h3>
+            <p>Five years of social content and campaign key visuals for national brands — 7-Eleven, SCG, Arabus, Weber — plus online-to-offline campaigns that move people from feed to event and back. Made to perform, on schedule, at volume.</p>
+            <div class="service-tags">
+              <span class="tag-pill">Campaigns</span>
+              <span class="tag-pill">Social</span>
+              <span class="tag-pill">Key visuals</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section id="work" class="hairline-top" aria-labelledby="work-title">
+      <div class="container">
+        <div class="work-head reveal">
+          <div>
+            <span class="eyebrow">Selected work</span>
+            <h2 class="section-title" id="work-title">Featured projects</h2>
+          </div>
+          <div class="filter-bar" role="group" aria-label="Filter projects by category">
+            <button class="filter-pill is-active" type="button" data-filter="All" aria-pressed="true">All</button>
+            <button class="filter-pill" type="button" data-filter="UX/UI Design" aria-pressed="false">UX/UI Design</button>
+            <button class="filter-pill" type="button" data-filter="Branding" aria-pressed="false">Branding</button>
+            <button class="filter-pill" type="button" data-filter="Graphic Design" aria-pressed="false">Graphic Design</button>
+            <button class="filter-pill" type="button" data-filter="Marketing &amp; Social" aria-pressed="false">Marketing &amp; Social</button>
+          </div>
+        </div>
+        <ul class="work-grid" id="work-grid"></ul>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section id="process" class="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Process</span>
+          <h2 class="section-title" id="process-title">How I work</h2>
+        </div>
+        <ol class="process-steps">
+          <li class="process-step reveal" style="--i:0">
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3>Discover</h3>
+            <p>Stakeholder interviews, audits and research into what the business actually needs.</p>
+          </li>
+          <li class="process-step reveal" style="--i:1">
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3>Define</h3>
+            <p>Information architecture, user flows and the one sentence the design must say.</p>
+          </li>
+          <li class="process-step reveal" style="--i:2">
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3>Design</h3>
+            <p>From wireframe to pixel-perfect UI or brand system, iterating with the team.</p>
+          </li>
+          <li class="process-step reveal" style="--i:3">
+            <span class="step-num" aria-hidden="true">04</span>
+            <h3>Deliver</h3>
+            <p>Specs, assets and support through the build — design isn't done until it ships.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="container reveal">
+        <span class="eyebrow" id="contact-title">Contact</span>
+        <div class="contact-actions">
+          <a class="contact-email" href="mailto:teevin.h@gmail.com">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 7.6 5.7a1.5 1.5 0 0 0 1.8 0L20.5 7"/></svg>
+            <span>teevin.h@gmail.com</span>
+          </a>
+          <a class="contact-phone" href="tel:+66944254159">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 3h3l1.7 4.3-2 1.5a12.5 12.5 0 0 0 6 6l1.5-2L20 14.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3Z"/></svg>
+            <span>(+66) 094-425-4159</span>
+          </a>
+        </div>
+        <div class="contact-socials">
+          <a href="#">LinkedIn</a>
+          <a href="#">Behance</a>
+          <a href="#">Dribbble</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="caption">&copy; 2026 Teevin "Atom" Hiranlertprasert — Bangkok, Thailand</p>
+      <nav aria-label="Footer">
+        <ul class="footer-links caption">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="mailto:teevin.h@gmail.com">Email</a></li>
+          <li><a href="tel:+660944254159">Phone</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K-Flo — Atom Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F5F4F0; --surface: #EDECE8; --text: #0D0D0D;
+      --muted: #9B9893; --accent: #2B46E0; --border: rgba(0,0,0,0.09);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; position: sticky; top: 0; z-index: 100; background: rgba(245,244,240,0.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.25rem; font-weight: 500; color: var(--text); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { color: var(--text) !important; border: 1px solid rgba(0,0,0,0.18); padding: 0.4rem 1.25rem; border-radius: 999px; }
+
+    .cs-back { padding: 2.5rem 3rem 0; max-width: 960px; margin: 0 auto; }
+    .cs-back a { font-size: 0.8rem; color: var(--muted); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .cs-back a:hover { color: var(--text); }
+
+    .cs-header { padding: 3rem 3rem 4rem; max-width: 960px; margin: 0 auto; }
+    .cs-tags { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
+    .cs-tags span { margin: 0 0.4rem; }
+    .cs-title { font-family: 'Poppins', sans-serif; font-size: clamp(2rem, 4.2vw, 3.33rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 2.5rem; }
+    .cs-lead { font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 400; line-height: 1.6; color: var(--text); max-width: 680px; border-left: 2px solid var(--accent); padding-left: 1.5rem; }
+
+    .cs-cover { width: 100%; aspect-ratio: 16/9; overflow: hidden; background: var(--surface); }
+    .cs-cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .cs-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .cs-meta-item { padding: 1.5rem 2rem; background: var(--bg); }
+    .cs-meta-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-meta-value { font-size: 0.88rem; font-weight: 400; line-height: 1.4; }
+
+    .cs-section { padding: 6rem 3rem; max-width: 960px; margin: 0 auto; }
+    .cs-section-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.25rem; }
+    .cs-section h2 { font-family: 'Poppins', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 1.75rem; }
+    .cs-section p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1rem; }
+
+    .cs-solutions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); margin-top: 2.5rem; }
+    .cs-sol { background: var(--bg); padding: 2rem; }
+    .cs-sol-num { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; display: block; margin-bottom: 0.75rem; }
+    .cs-sol h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; }
+    .cs-sol p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    .cs-img-full { width: 100%; overflow: hidden; background: var(--surface); }
+    .cs-img-full img { width: 100%; display: block; object-fit: cover; }
+    .cs-img-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-2col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 4/3; background: var(--surface); }
+    .cs-img-3col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--border); }
+    .cs-img-3col img { width: 100%; display: block; object-fit: cover; aspect-ratio: 3/4; background: var(--surface); }
+    .cs-img-hscroll-wrap { width: 100%; position: relative; overflow: hidden; }
+    .cs-img-hscroll { display: flex; gap: 3px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; cursor: grab; background: var(--border); }
+    .cs-img-hscroll::-webkit-scrollbar { display: none; }
+    .cs-img-hscroll img { height: 420px; width: auto; flex-shrink: 0; object-fit: cover; display: block; background: var(--surface); pointer-events: none; }
+    .cs-scroll-hint { text-align: center; padding: 0.75rem; font-size: 0.68rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); }
+
+    .cs-impact { border-top: 1px solid var(--border); padding: 6rem 3rem; background: var(--surface); }
+    .cs-impact-wrap { max-width: 960px; margin: 0 auto; }
+    .cs-impact-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 3rem; }
+    .cs-impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+    .cs-stat-num { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.4rem; }
+    .cs-stat-label { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+    .cs-bottom-nav { display: flex; justify-content: space-between; align-items: center; padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .cs-nav-link { font-size: 0.875rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-link:hover { color: var(--text); }
+    .cs-nav-center { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .cs-nav-center:hover { color: var(--text); }
+
+    footer { padding: 2rem 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text); }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Atom.</a>
+  <ul class="nav-links">
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="cs-back"><a href="index.html">← All Work</a></div>
+
+<header class="cs-header">
+  <div class="cs-tags">UX / UI <span>·</span> E-Commerce <span>·</span> Web <span>·</span> 2021</div>
+  <h1 class="cs-title">K-Flo</h1>
+  <p class="cs-lead">K-Flo sells industrial filters — specialist products with complex specs. The website needed to make it easy for technical buyers to find exactly what they need and order without friction.</p>
+</header>
+
+<div class="cs-cover">
+  <img src="images/projects/k-flo/Landing.jpg" alt="K-Flo landing page">
+</div>
+
+<div class="cs-meta">
+  <div class="cs-meta-item"><div class="cs-meta-label">Client</div><div class="cs-meta-value">K-Flo Co., Ltd.</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">UX/UI Designer</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Timeline</div><div class="cs-meta-value">2021</div></div>
+  <div class="cs-meta-item"><div class="cs-meta-label">Deliverables</div><div class="cs-meta-value">UX Research · Web Design · Product Catalogue</div></div>
+</div>
+
+<section class="cs-section">
+  <div class="cs-section-label">01 — Challenge</div>
+  <h2>Technical products.
+Simple experience.</h2>
+  <p>Industrial buyers know exactly what they want — but the old K-Flo site made them work hard to find it. Categories weren't clear, the product hierarchy was flat, and there was no way to filter by technical specification.</p>
+  <p>The result was that buyers either called the sales team directly or gave up. The goal was to design a catalogue experience clear enough that customers could self-serve from first click to checkout.</p>
+</section>
+
+<div class="cs-img-full"><img src="images/projects/k-flo/Category.png" alt="Category design"></div>
+
+<section class="cs-section">
+  <div class="cs-section-label">02 — Approach</div>
+  <h2>Find it.
+Confirm it.
+Buy it.</h2>
+  <p style="margin-bottom:2rem;color:var(--muted);line-height:1.8;max-width:680px;">The design was built around the mental model of an experienced buyer — someone who knows their filter type, but needs to quickly confirm the spec before committing to an order.</p>
+  <div class="cs-solutions">
+    <div class="cs-sol">
+      <span class="cs-sol-num">01</span>
+      <h3>Information Architecture</h3>
+      <p>Restructured the product categories to match how buyers actually think — by filter type first, then by specification, rather than by internal product code.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">02</span>
+      <h3>Category Pages</h3>
+      <p>Designed clear, scannable category landing pages that let buyers orient quickly and narrow down without having to read through long product descriptions.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">03</span>
+      <h3>Product Selection</h3>
+      <p>A guided selection flow that walks buyers through the key specs — size, material, flow rate — so they can confirm the right product with confidence.</p>
+    </div>
+    <div class="cs-sol">
+      <span class="cs-sol-num">04</span>
+      <h3>Mockups & Visual Design</h3>
+      <p>Clean, functional UI that communicates precision and reliability — which matters when you're selling to engineers.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cs-img-full"><img src="images/projects/k-flo/Choose-Product.png" alt="Product selection"></div>
+<div class="cs-img-2col">
+  <img src="images/projects/k-flo/Mockup1.jpg" alt="K-Flo mockup">
+  <img src="images/projects/k-flo/Mockup2.png" alt="K-Flo mockup">
+</div>
+
+<section class="cs-impact">
+  <div class="cs-impact-wrap">
+    <div class="cs-impact-label">03 — Outcomes</div>
+    <div class="cs-impact-grid">
+      <div>
+        <div class="cs-stat-num">↓</div>
+        <div class="cs-stat-label">Reduced reliance on sales team for routine product enquiries</div>
+      </div>
+      <div>
+        <div class="cs-stat-num">3</div>
+        <div class="cs-stat-label">Key flows redesigned — browse, select, confirm</div>
+      </div>
+      <div>
+        <div class="cs-stat-num">B2B</div>
+        <div class="cs-stat-label">Designed for technical buyers, not general consumers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cs-bottom-nav">
+  <a href="new-economy-academy.html" class="cs-nav-link">← New Economy Academy</a>
+  <a href="index.html#work" class="cs-nav-center">All Projects</a>
+  <a href="tivlog.html" class="cs-nav-link">Tivlog →</a>
+</div>
+
+<footer>
+  <p>© 2026 Teevin "Atom" Hiranlertprasert</p>
+  <div class="footer-links">
+    <a href="mailto:teevin.h@gmail.com">Email</a>
+    <a href="tel:+660944254159">Phone</a>
+  </div>
+</footer>
+
+</body>
+</html>
