@@ -65,7 +65,7 @@ const PROJECTS = [
     title: 'Crypto Wushu Game',
     category: 'UX/UI Design',
     tagline: 'Landing page, character cards and marketplace UI for an NFT martial-arts game.',
-    cover: 'images/projects/wushu Game/Landing page.png',
+    cover: 'images/projects/wushu Game/Landing page.jpg',
     pos: 'top',   /* very tall page screenshot — keep the game hero visible */
     url: 'wushu.html'
   },

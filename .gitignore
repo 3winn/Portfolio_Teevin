@@ -6,3 +6,4 @@ images-original/
 
 # Local tool settings
 .claude/settings.local.json
+reports/
